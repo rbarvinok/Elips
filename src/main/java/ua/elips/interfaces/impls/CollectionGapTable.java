@@ -27,6 +27,7 @@ public class CollectionGapTable implements GapTable {
         gapList.remove(gap);
     }
 
+
     public ObservableList<Gap> getGapList() {
         return gapList;
     }

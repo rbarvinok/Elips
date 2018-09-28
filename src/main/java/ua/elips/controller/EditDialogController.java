@@ -15,19 +15,19 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class EditDialogController {
-//public class EditDialogController implements Initializable{
+   // public class EditDialogController implements Initializable {
 
-    @FXML
-    private Button btnOk;
+        @FXML
+        private Button btnOk;
 
-    @FXML
-    private Button btnCancel;
+        @FXML
+        private Button btnCancel;
 
-    @FXML
-    private TextField txtFIO;
+        @FXML
+        private TextField txtFIO;
 
-    @FXML
-    private TextField txtPhone;
+        @FXML
+        private TextField txtPhone;
     /*
 
     private Person person;
@@ -78,4 +78,4 @@ public class EditDialogController {
         this.resourceBundle = resources;
     }
     */
-}
+    }
