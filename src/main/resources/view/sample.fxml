@@ -56,17 +56,17 @@
         </Menu>
             <Menu mnemonicParsing="false" text="Геодезичні задачі">
               <items>
-                  <Menu mnemonicParsing="false" text="СК-42">
+                  <Menu fx:id="mCk42" mnemonicParsing="false" text="СК-42">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Пряма задача" />
-                        <MenuItem mnemonicParsing="false" text="Обернена задача" />
+                      <MenuItem fx:id="mPgzCK42" mnemonicParsing="false" text="Пряма задача" />
+                        <MenuItem fx:id="mOgzCK42" mnemonicParsing="false" text="Обернена задача" />
                         <MenuItem mnemonicParsing="false" text="Конвертор в WGS-84" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="WGS-84">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Пряма задача" />
-                      <MenuItem mnemonicParsing="false" text="Обернена задача" />
+                      <MenuItem fx:id="mPgzWGS" mnemonicParsing="false" text="Пряма задача" />
+                      <MenuItem fx:id="mOgzWGS" mnemonicParsing="false" text="Обернена задача" />
                         <MenuItem mnemonicParsing="false" text="Конвертор в СК-42" />
                     </items>
                   </Menu>
@@ -206,7 +206,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
             </HBox>
-            <TableView fx:id="table_id" layoutX="10.0" layoutY="127.0" prefHeight="191.0" prefWidth="691.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="127.0">
+            <TableView fx:id="tableGap" layoutX="10.0" layoutY="127.0" prefHeight="191.0" prefWidth="691.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="127.0">
                <columns>
                   <TableColumn fx:id="col_id" maxWidth="2000.0" prefWidth="30.0" text="Постріл" />
                   <TableColumn fx:id="col_x" prefWidth="174.0" text="X" />
@@ -303,7 +303,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="D_cgr" editable="false" layoutX="477.0" layoutY="40.0" prefHeight="24.0" prefWidth="127.0">
+                  <TextField fx:id="d_cgr" editable="false" layoutX="477.0" layoutY="40.0" prefHeight="24.0" prefWidth="127.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>
