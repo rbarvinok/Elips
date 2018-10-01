@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -40,24 +39,24 @@ public class Controller {
     CollectionGapTable gapTableImpl = new CollectionGapTable();
 
     private void initialize() {
-        col_id.setCellValueFactory(new PropertyValueFactory<Gap, Integer>("id"));
-        col_x.setCellValueFactory(new PropertyValueFactory<Gap, String>("x"));
+//        col_id.setCellValueFactory(new PropertyValueFactory<Gap, Integer>("id"));
+//        col_x.setCellValueFactory(new PropertyValueFactory<Gap, String>("x"));
 
-//        col_id.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-//        col_x.setCellValueFactory(cellData -> cellData.getValue().xProperty());
-//        col_y.setCellValueFactory(cellData -> cellData.getValue().yProperty());
-//        col_d.setCellValueFactory(cellData -> cellData.getValue().dProperty());
-//        col_a.setCellValueFactory(cellData -> cellData.getValue().aProperty());
-//        col_dd.setCellValueFactory(cellData -> cellData.getValue().ddProperty());
-//        col_db.setCellValueFactory(cellData -> cellData.getValue().dbProperty());
+        col_id.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        col_x.setCellValueFactory(cellData -> cellData.getValue().xProperty());
+        col_y.setCellValueFactory(cellData -> cellData.getValue().yProperty());
+        col_d.setCellValueFactory(cellData -> cellData.getValue().dProperty());
+        col_a.setCellValueFactory(cellData -> cellData.getValue().aProperty());
+        col_dd.setCellValueFactory(cellData -> cellData.getValue().ddProperty());
+        col_db.setCellValueFactory(cellData -> cellData.getValue().dbProperty());
 
         gapTableImpl.print();
         gapTableImpl.fillTestData();
         tableGap.setItems(gapTableImpl.getGapList());
-        updateCountLabel();
+        updateCount();
     }
 
-    private void updateCountLabel() {
+    private void updateCount() {
         gapCount.setText(Integer.toString(gapTableImpl.getGapList().size()));
     }
 
@@ -79,7 +78,8 @@ public class Controller {
     public void onClick_btnPlas(ActionEvent actionEvent) {
     }
 
-
     public void onClick_OK(ActionEvent actionEvent) {
     }
+
+
 }

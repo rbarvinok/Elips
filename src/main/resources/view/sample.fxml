@@ -93,7 +93,7 @@
                         <Font size="10.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
+                        <ImageView fx:id="tPlas" fitHeight="15.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
                            <image>
                               <Image url="@../images/+2.png" />
                            </image>
@@ -111,7 +111,7 @@
                   </Button>
                   <Button fx:id="tedit" mnemonicParsing="false" prefHeight="20.0" prefWidth="30.0" textFill="#2b07e3">
                      <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="17.0" pickOnBounds="true">
+                        <ImageView fx:id="tEdit" fitHeight="15.0" fitWidth="17.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/edit1.png" />
                            </image>
@@ -132,7 +132,7 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="12.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tDel" fitHeight="12.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/-.png" />
                            </image>
