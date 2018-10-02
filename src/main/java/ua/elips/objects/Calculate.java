@@ -21,7 +21,7 @@ public class Calculate {
 
 
     public String calculateDd() {
-        // dd = Math.cos(aVp-aCgr)*d-dCgr;
+         //dd = Math.cos(aVp-aCgr)*d-dCgr;
         return Double.toString(dd);
     }
 

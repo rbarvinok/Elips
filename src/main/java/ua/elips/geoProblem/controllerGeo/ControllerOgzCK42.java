@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import ua.elips.geoProblem.OgzCK42;
-import ua.elips.objects.PushButton;
+import ua.elips.objects.DialogManeger;
+import ua.elips.objects.PushBackBatton;
+
 
 import java.io.IOException;
 
@@ -16,7 +18,8 @@ public class ControllerOgzCK42 {
     public Button btnok, btnx1, btnx2, back, dov;
 
 
-    PushButton pb = new PushButton();
+    PushBackBatton pb = new PushBackBatton();
+    DialogManeger dm = new DialogManeger();
 
     public void onClick_btnx1(ActionEvent actionEvent) {
         Tx1.setText("");
@@ -42,7 +45,7 @@ public class ControllerOgzCK42 {
             a.setText(Double.toString(ogz.getAngle()).replace(".", ","));
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            pb.alert();
+            dm.alert();
         }
 
     }
@@ -53,9 +56,9 @@ public class ControllerOgzCK42 {
     }
 
     public void onClick_dov(ActionEvent actionEvent) {
-        pb.hd = "Обернена геодезична задача";
-        pb.ct = "По відомим координатам двох точок розраховується довжина лінії між цими точками та дирекційний кут цієї лінії";
-        pb.dov = dov;
-        pb.dovButton();
+        dm.hd = "Обернена геодезична задача";
+        dm.ct = "По відомим координатам двох точок розраховується довжина лінії між цими точками та дирекційний кут цієї лінії";
+        dm.dov = dov;
+        dm.dovButton();
     }
 }

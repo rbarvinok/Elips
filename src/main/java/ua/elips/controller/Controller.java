@@ -6,11 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ua.elips.interfaces.impls.CollectionGapTable;
+import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
 import java.io.IOException;
@@ -37,10 +38,9 @@ public class Controller {
     public TableColumn<Gap, String> col_dd;
     public TableColumn<Gap, String> col_db;
 
-   // public  Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
-
+    //
+    DialogManeger dm = new DialogManeger();
     CollectionGapTable gapTableImpl = new CollectionGapTable();
-
 
 
     public void initialize() {
@@ -51,8 +51,6 @@ public class Controller {
 //        col_a.setCellValueFactory(new PropertyValueFactory<Gap, String>("a"));
 //        col_dd.setCellValueFactory(new PropertyValueFactory<Gap, String>("dd"));
 //        col_db.setCellValueFactory(new PropertyValueFactory<Gap, String>("db"));
-
-
         col_id.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         col_x.setCellValueFactory(cellData -> cellData.getValue().xProperty());
         col_y.setCellValueFactory(cellData -> cellData.getValue().yProperty());
@@ -65,6 +63,7 @@ public class Controller {
         gapTableImpl.fillTestData();
         tableGap.setItems(gapTableImpl.getGapList());
         updateCount();
+
     }
 
     private void updateCount() {
@@ -72,6 +71,21 @@ public class Controller {
     }
 
     //Gap selectedGap = (Gap) tableGap.getSelectionModel().getSelectedItem();
+
+
+    public void onClick_OK(ActionEvent actionEvent) {
+        try {
+            Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
+            Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
+        } catch (NumberFormatException e) {
+            dm.alert();
+        }
+    }
+
+
+    public void onClick_btnPlas(ActionEvent actionEvent) {
+    }
+
 
     public void onClick_menuExit(ActionEvent actionEvent) {
         System.exit(0);
@@ -86,10 +100,48 @@ public class Controller {
         stage.show();
     }
 
-    public void onClick_btnPlas(ActionEvent actionEvent) {
+    public void onClick_menuPGZ(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzCK42.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //stage = new Stage();
+        stage.setTitle("Пряма геодезична задача");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 
-    public void onClick_OK(ActionEvent actionEvent) {
+    public void onClick_menuOGZ(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleOgzCK42.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        //stage = new Stage();
+        stage.setTitle("Обернена геодезична задача");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(root2));
+        stage.show();
+    }
+
+    public void onClick_menuOGZ84(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleOgzWGS84.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        //stage = new Stage();
+        stage.setTitle("Обернена геодезична задача");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(root2));
+        stage.show();
+    }
+
+    public void onClick_menuPGZ84(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzWGS84.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        //stage = new Stage();
+        stage.setTitle("Пряма геодезична задача");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(root2));
+        stage.show();
     }
 
 

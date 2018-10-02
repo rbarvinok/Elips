@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import ua.elips.geoProblem.OgzWGS84;
 import ua.elips.objects.Clear;
-import ua.elips.objects.PushButton;
-
+import ua.elips.objects.DialogManeger;
+import ua.elips.objects.PushBackBatton;
 
 import java.io.IOException;
 
@@ -25,8 +25,8 @@ public class ControllerOgzWGS84 {
     @FXML
     public Button btnok, btnx1, btnx2, back, dov;
 
-
-     PushButton pb = new PushButton();
+    PushBackBatton pb = new PushBackBatton();
+    DialogManeger dm = new DialogManeger();
 
     public void onClick_btnx1(ActionEvent actionEvent) {
         Clear.clear(Tx1d, Tx1m, Tx1s, Ty1d, Ty1m, Ty1s);
@@ -67,7 +67,7 @@ public class ControllerOgzWGS84 {
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            pb.alert();
+            dm.alert();
         }
 
     }
@@ -78,9 +78,9 @@ public class ControllerOgzWGS84 {
     }
 
     public void onClick_dov(ActionEvent actionEvent) {
-        pb.hd = "Обернена геодезична задача";
-        pb.ct = "По відомим координатам двох точок розраховується довжина лінії між цими точками та дирекційний кут цієї лінії";
-        pb.dov = dov;
-        pb.dovButton();
+        dm.hd = "Обернена геодезична задача";
+        dm.ct = "По відомим координатам двох точок розраховується довжина лінії між цими точками та дирекційний кут цієї лінії";
+        dm.dov = dov;
+        dm.dovButton();
     }
 }

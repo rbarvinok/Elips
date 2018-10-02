@@ -6,11 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import ua.elips.geoProblem.PgzWGS84;
 import ua.elips.objects.Clear;
-import ua.elips.objects.PushButton;
-
+import ua.elips.objects.DialogManeger;
+import ua.elips.objects.PushBackBatton;
 
 import java.io.IOException;
-
 
 public class ControllerPgzWGS84 {
     @FXML
@@ -26,8 +25,8 @@ public class ControllerPgzWGS84 {
     @FXML
     public Button btnok, btnx1, btnx2, back, dov;
 
-    PushButton pb = new PushButton();
-
+    PushBackBatton pb = new PushBackBatton();
+    DialogManeger dm = new DialogManeger();
 
     public void onClick_btnx1(ActionEvent actionEvent) {
         Clear.clear(Tx1d, Tx1m, Tx1s, Ty1d, Ty1m, Ty1s);
@@ -69,7 +68,7 @@ public class ControllerPgzWGS84 {
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            pb.alert();
+            dm.alert();
         }
 
     }
@@ -80,9 +79,9 @@ public class ControllerPgzWGS84 {
     }
 
     public void onClick_dov(ActionEvent actionEvent) {
-        pb.hd = "Пряма геодезична задача";
-        pb.ct = "По відомим координатам однієї точки розраховується координати другої точки, для чого необхідно знати довжину лінії між цими точками та дирекційний кут цієї лінії";
-        pb.dov = dov;
-        pb.dovButton();
+        dm.hd = "Пряма геодезична задача";
+        dm.ct = "По відомим координатам однієї точки розраховується координати другої точки, для чого необхідно знати довжину лінії між цими точками та дирекційний кут цієї лінії";
+        dm.dov = dov;
+        dm.dovButton();
     }
 }

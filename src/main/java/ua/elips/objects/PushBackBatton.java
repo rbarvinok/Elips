@@ -1,12 +1,11 @@
 package ua.elips.objects;
 
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PushBtnBack {
+public class PushBackBatton {
     public Button back;
 
     public void backButton() throws IOException {
