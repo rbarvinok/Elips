@@ -158,7 +158,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="Tx1" prefHeight="25.0" prefWidth="200.0" promptText="47720">
+                  <TextField prefHeight="25.0" prefWidth="200.0" promptText="47720" fx:id="x_Vp">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>
@@ -177,7 +177,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="Ty1" prefHeight="25.0" prefWidth="200.0" promptText="94303">
+                  <TextField fx:id="y_Vp" prefHeight="25.0" prefWidth="200.0" promptText="94303">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -193,7 +193,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="200.0" promptText="318,5">
+                  <TextField fx:id="h_Vp" prefHeight="25.0" prefWidth="200.0" promptText="318,5">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -282,7 +282,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Tx_cgr" editable="false" layoutX="75.0" layoutY="38.0" prefHeight="20.0" prefWidth="127.0">
+                  <TextField editable="false" layoutX="75.0" layoutY="38.0" prefHeight="20.0" prefWidth="127.0" fx:id="x_cgr">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>
@@ -295,7 +295,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Ty_cgr" editable="false" layoutX="239.0" layoutY="38.0" prefHeight="24.0" prefWidth="127.0">
+                  <TextField fx:id="y_cgr" editable="false" layoutX="239.0" layoutY="38.0" prefHeight="24.0" prefWidth="127.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>

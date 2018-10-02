@@ -23,26 +23,13 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-       // fillTestData();
+
 
     }
 
 
 
-//    private void fillTestData(){
-//        CollectionGapTable gapTable = new CollectionGapTable();
-//        Gap gap = new Gap(1, "45000.9","96000.6","45.0","15.0","2.0","5.2");
-//
-//        Gap gap2 = new Gap(2, "45555.5","96888.3","450.0","15.5","2.5","5.8");
-//        gapTable.add(gap);
-//        gapTable.add(gap2);
-//
-//        gap.setX("111");
-//
-//        gapTable.delete(gap2);
 
-
-    //}
 
 
     public static void main(String[] args) {

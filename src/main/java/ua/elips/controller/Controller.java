@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,7 +18,7 @@ import java.io.IOException;
 public class Controller {
 
     @FXML
-    public TextField Tx1, Ty1, Tx_cgr, Ty_cgr, a_cgr, d_cgr;
+    public TextField x_Vp, y_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
     @FXML
     public Button btnOk;
     @FXML
@@ -36,11 +37,21 @@ public class Controller {
     public TableColumn<Gap, String> col_dd;
     public TableColumn<Gap, String> col_db;
 
+   // public  Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
+
     CollectionGapTable gapTableImpl = new CollectionGapTable();
 
-    private void initialize() {
+
+
+    public void initialize() {
 //        col_id.setCellValueFactory(new PropertyValueFactory<Gap, Integer>("id"));
 //        col_x.setCellValueFactory(new PropertyValueFactory<Gap, String>("x"));
+//        col_y.setCellValueFactory(new PropertyValueFactory<Gap, String>("y"));
+//        col_d.setCellValueFactory(new PropertyValueFactory<Gap, String>("d"));
+//        col_a.setCellValueFactory(new PropertyValueFactory<Gap, String>("a"));
+//        col_dd.setCellValueFactory(new PropertyValueFactory<Gap, String>("dd"));
+//        col_db.setCellValueFactory(new PropertyValueFactory<Gap, String>("db"));
+
 
         col_id.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         col_x.setCellValueFactory(cellData -> cellData.getValue().xProperty());
