@@ -63,7 +63,6 @@ public class Controller {
         gapTableImpl.fillTestData();
         tableGap.setItems(gapTableImpl.getGapList());
         updateCount();
-
     }
 
     private void updateCount() {

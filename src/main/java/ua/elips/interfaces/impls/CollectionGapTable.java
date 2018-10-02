@@ -33,20 +33,23 @@ public class CollectionGapTable implements GapTable {
         return gapList;
     }
 
-    public void print(){
+    public void print() {
         int number = 0;
         System.out.println();
-        for(Gap gap : gapList){
+        for (Gap gap : gapList) {
             number++;
-            System.out.println(number+") X = "+gap.getX()+"; Y = "+gap.getY());
+            System.out.println(number + ") X = " + gap.getX() + "; Y = " + gap.getY());
         }
     }
-Calculate calc = new Calculate();
-    public void fillTestData(){
-        gapList.add(new Gap(1, "45000.9","96000.6",calc.calculateD(),calc.calculateA(),calc.calculateDd(),calc.calculateDb()));
-        gapList.add(new Gap(2, "45555.5","96888.3","450.0","15.5","2.5","5.8"));
-        gapList.add(new Gap(3, "45877.2","96850.2","420.0","14.5","3.5","5.4"));
-        gapList.add(new Gap(3, "47777.2","32550.2","420.0","14.5","0.5","0.4"));
+
+    Calculate calc = new Calculate();
+
+    public void fillTestData() {
+        int namber = 1;
+        gapList.add(new Gap(namber++, "45000.9", "96000.6", calc.calculateD(), calc.calculateA(), calc.calculateDd(), calc.calculateDb()));
+        gapList.add(new Gap(namber++, "45555.5", "96888.3", "450.0", "15.5", "2.5", "5.8"));
+        gapList.add(new Gap(namber++, "45877.2", "96850.2", "420.0", "14.5", "3.5", "5.4"));
+        gapList.add(new Gap(namber++, "47777.2", "32550.2", "420.0", "14.5", "0.5", "0.4"));
 
     }
 
