@@ -42,6 +42,9 @@ public class Controller {
     public TableColumn<Gap, String> col_dd;
     public TableColumn<Gap, String> col_db;
 
+    public static double xVp;
+    public static double yVp;
+
     DialogManeger dm = new DialogManeger();
     CollectionGapTable gapTableImpl = new CollectionGapTable();
     Calculate calc = new Calculate();
@@ -55,6 +58,7 @@ public class Controller {
 //        col_a.setCellValueFactory(new PropertyValueFactory<Gap, String>("a"));
 //        col_dd.setCellValueFactory(new PropertyValueFactory<Gap, String>("dd"));
 //        col_db.setCellValueFactory(new PropertyValueFactory<Gap, String>("db"));
+
         col_id.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         col_x.setCellValueFactory(cellData -> cellData.getValue().xProperty());
         col_y.setCellValueFactory(cellData -> cellData.getValue().yProperty());
@@ -67,6 +71,7 @@ public class Controller {
         gapTableImpl.fillTestData();
         tableGap.setItems(gapTableImpl.getGapList());
         updateCount();
+
     }
 
     private void updateCount() {
@@ -77,23 +82,24 @@ public class Controller {
 
 
     public void onClick_OK(ActionEvent actionEvent) {
-
         try {
-            Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
-            Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
+            xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
+            yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
         } catch (NumberFormatException e) {
             dm.alert();
         }
 
-        x_cgr.setText(calc.calculateXcgr());
-        y_cgr.setText(calc.calculateYcgr());
-        a_cgr.setText(calc.calculateAcgr());
-        d_cgr.setText(calc.calculateDcgr());
-        vd.setText(calc.calculateVd());
-        vb.setText(calc.calculateVb());
-
+        x_cgr.setText(calc.calculateXcgr().replace(".", ","));
+        y_cgr.setText(calc.calculateYcgr().replace(".", ","));
+        a_cgr.setText(calc.calculateAcgr().replace(".", ","));
+        d_cgr.setText(calc.calculateDcgr().replace(".", ","));
+        vd.setText(calc.calculateVd().replace(".", ","));
+        vb.setText(calc.calculateVb().replace(".", ","));
 
     }
+
+
+
 
     public void onClick_btnPlas(ActionEvent actionEvent) {
     }

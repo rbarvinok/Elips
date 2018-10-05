@@ -2,7 +2,7 @@ package ua.elips.interfaces;
 
 import ua.elips.objects.Gap;
 
-public interface GapTable {
+public interface GapTableInterface {
 
     // добавить запись
     void add(Gap gap);

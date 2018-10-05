@@ -2,6 +2,10 @@ package ua.elips.objects;
 
 import ua.elips.geoProblem.OgzCK42;
 
+import static ua.elips.controller.Controller.xVp;
+import static ua.elips.controller.Controller.yVp;
+
+
 public class Calculate {
 
     private double dGap;
@@ -10,73 +14,68 @@ public class Calculate {
     private double db;
     private double xCgr, yCgr, dCgr, aCgr;
     private double vd, vb;
+//    public double xVp;
+//    public double yVp;
 
-//    double dist;
-//    double ang;
-
-    private void DA(Double x1, Double y1, Double x2, Double y2) {
-        Dist(x1, y1, x2, y2);
-        Ang(x1, y1, x2, y2);
-    }
-
-
-    public void Dist(Double x1, Double y1, Double x2, Double y2) {
-        OgzCK42 ogzCK42 = new OgzCK42(x1, y1, x2, y2);
-        double dist = ogzCK42.getDistance();
-    }
-
-    private void Ang(Double x1, Double y1, Double x2, Double y2) {
-        OgzCK42 ogzCK42 = new OgzCK42(x1, y1, x2, y2);
-        double ang = ogzCK42.getAngle();
-    }
 
     public String culculateDGap() {
-        dGap = 45.5;
-        return Double.toString(Math.rint(dGap * 100) / 100);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45000.9, 96000.6);
+        dGap = ogzCK42.getDistance();
+        return Double.toString(Math.rint(dGap * 100) / 100).replace(".", ",");
     }
 
     public String culculateAGap() {
-        aGap = 78.02;
-        return Double.toString(Math.rint(aGap * 100) / 100);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45000.9, 96000.6);
+        aGap = ogzCK42.getAngle();
+        return Double.toString(Math.rint(aGap * 100) / 100).replace(".", ",");
     }
 
     public String calculateDd() {
         dd = Math.cos(aGap - aCgr) * dGap - dCgr;
-        return Double.toString(Math.rint(dd * 100) / 100);
+        return Double.toString(Math.rint(dd * 100) / 100).replace(".", ",");
     }
 
     public String calculateDb() {
         db = Math.sin(aGap - aCgr) * dGap;
-        return Double.toString(Math.rint(db * 100) / 100);
+        return Double.toString(Math.rint(db * 100) / 100).replace(".", ",");
     }
 
     public String calculateXcgr() {
-        xCgr = 54254.2;
-        return Double.toString(Math.rint(xCgr * 100) / 100);
+        xCgr = 55254.2;
+//        int i = 0;
+//
+//        for (Gap gap : gapList) {
+//            i++;
+//            System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY());
+//            xCgr = Double.parseDouble(gap.getX());
+//        }
+        return Double.toString(Math.rint(xCgr * 100) / 100).replace(".", ",");
     }
 
     public String calculateYcgr() {
-        yCgr = 6050.0;
-        return Double.toString(Math.rint(yCgr * 100) / 100);
+        yCgr = 96201.0;
+        return Double.toString(Math.rint(yCgr * 100) / 100).replace(".", ",");
     }
 
     public String calculateVd() {
         vd = 58;
-        return Double.toString(Math.rint(vd * 100) / 100);
+        return Double.toString(Math.rint(vd * 100) / 100).replace(".", ",");
     }
 
     public String calculateVb() {
-        vb = 658.2;
-        return Double.toString(Math.rint(vb * 100) / 100);
+        vb = 65.2;
+        return Double.toString(Math.rint(vb * 100) / 100).replace(".", ",");
     }
 
     public String calculateDcgr() {
-        dCgr = 45;
-        return Double.toString(Math.rint(dCgr * 100) / 100);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, xCgr, yCgr);
+        dCgr = ogzCK42.getDistance();
+        return Double.toString(Math.rint(dCgr * 100) / 100).replace(".", ",");
     }
 
     public String calculateAcgr() {
-        aCgr = 85.3;
-        return Double.toString(Math.rint(aCgr * 100) / 100);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, xCgr, yCgr);
+        aCgr = ogzCK42.getAngle();
+        return Double.toString(Math.rint(aCgr * 100) / 100).replace(".", ",");
     }
 }

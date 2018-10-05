@@ -2,12 +2,12 @@ package ua.elips.interfaces.impls;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import ua.elips.interfaces.GapTable;
+import ua.elips.interfaces.GapTableInterface;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.Gap;
 
 // класс реализовывает интерфейс с помощью коллекции
-public class CollectionGapTable implements GapTable {
+public class CollectionGapTable implements GapTableInterface {
 
     private ObservableList<Gap> gapList = FXCollections.observableArrayList();
 
@@ -34,13 +34,15 @@ public class CollectionGapTable implements GapTable {
     }
 
     public void print() {
-        int number = 0;
+        int i = 0;
         System.out.println();
         for (Gap gap : gapList) {
-            number++;
-            System.out.println(number + ") X = " + gap.getX() + "; Y = " + gap.getY());
+            i++;
+            System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY());
         }
     }
+
+
 
     Calculate calc = new Calculate();
 
