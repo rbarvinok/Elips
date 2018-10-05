@@ -10,7 +10,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ua.elips.geoProblem.OgzCK42;
 import ua.elips.interfaces.impls.CollectionGapTable;
+import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
@@ -20,6 +22,8 @@ public class Controller {
 
     @FXML
     public TextField x_Vp, y_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
+    @FXML
+    public TextField vd, vb;
     @FXML
     public Button btnOk;
     @FXML
@@ -38,9 +42,9 @@ public class Controller {
     public TableColumn<Gap, String> col_dd;
     public TableColumn<Gap, String> col_db;
 
-    //
     DialogManeger dm = new DialogManeger();
     CollectionGapTable gapTableImpl = new CollectionGapTable();
+    Calculate calc = new Calculate();
 
 
     public void initialize() {
@@ -73,14 +77,23 @@ public class Controller {
 
 
     public void onClick_OK(ActionEvent actionEvent) {
+
         try {
             Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
             Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
         } catch (NumberFormatException e) {
             dm.alert();
         }
-    }
 
+        x_cgr.setText(calc.calculateXcgr());
+        y_cgr.setText(calc.calculateYcgr());
+        a_cgr.setText(calc.calculateAcgr());
+        d_cgr.setText(calc.calculateDcgr());
+        vd.setText(calc.calculateVd());
+        vb.setText(calc.calculateVb());
+
+
+    }
 
     public void onClick_btnPlas(ActionEvent actionEvent) {
     }

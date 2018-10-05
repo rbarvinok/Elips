@@ -34,7 +34,7 @@ public class ControllerOgzCK42 {
     public void onClick_btnOk(ActionEvent actionEvent) {
 
         try {
-            Double x1 = Double.parseDouble(Tx1.getText().replaceAll(",", "."));
+            Double x1 = Double.parseDouble(Tx1.getText().replace(",", "."));
             Double y1 = Double.parseDouble(Ty1.getText().replace(",", "."));
             Double x2 = Double.parseDouble(Tx2.getText().replace(",", "."));
             Double y2 = Double.parseDouble(Ty2.getText().replace(",", "."));
