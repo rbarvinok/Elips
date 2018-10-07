@@ -17,13 +17,13 @@ public class Gap {
 
  //* Пустой конструктор.
     public Gap () {
-        this.id = null;
-        this.x = null;
-        this.y = null;
-        this.d = null;
-        this.a = null;
-        this.dd = null;
-        this.db = null;
+        this.id = new SimpleIntegerProperty(0);
+        this.x = new SimpleStringProperty("");
+        this.y = new SimpleStringProperty("");
+        this.d = new SimpleStringProperty("");
+        this.a = new SimpleStringProperty("");
+        this.dd = new SimpleStringProperty("");
+        this.db = new SimpleStringProperty("");
     }
 
 //Констрултор

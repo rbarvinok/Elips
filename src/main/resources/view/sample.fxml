@@ -88,12 +88,12 @@
             </Label>
             <ToolBar layoutX="1.0" prefHeight="25.0" prefWidth="709.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                <items>
-                  <Button fx:id="tplas" lineSpacing="1.0" mnemonicParsing="false" onAction="#onClick_btnPlas" prefHeight="20.0" prefWidth="30.0" textFill="#07e31e">
+                  <Button fx:id="tAdd" lineSpacing="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" textFill="#07e31e">
                      <font>
                         <Font size="10.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tPlas" fitHeight="15.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
+                        <ImageView fx:id="tAdd" fitHeight="15.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
                            <image>
                               <Image url="@../images/+2.png" />
                            </image>
@@ -109,9 +109,9 @@
                         <Tooltip opacity="0.8" text="Додати" textAlignment="CENTER" textOverrun="CLIP" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tedit" mnemonicParsing="false" prefHeight="20.0" prefWidth="30.0" textFill="#2b07e3">
+                  <Button fx:id="tEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" textFill="#2b07e3">
                      <graphic>
-                        <ImageView fx:id="tEdit" fitHeight="15.0" fitWidth="17.0" pickOnBounds="true">
+                        <ImageView fx:id="tEdit" fitHeight="15.0" fitWidth="17.0" onDragDetected="#actionButtonPressed" pickOnBounds="true">
                            <image>
                               <Image url="@../images/edit1.png" />
                            </image>
@@ -127,12 +127,12 @@
                         <Tooltip opacity="0.8" text="Редагувати" textAlignment="CENTER" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tdel" minHeight="23.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="32.0" textFill="#e40606">
+                  <Button fx:id="tDelete" minHeight="23.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="0.0" prefWidth="32.0" textFill="#e40606">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tDel" fitHeight="12.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tDelete" fitHeight="12.0" fitWidth="15.0" onDragDetected="#actionButtonPressed" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/-.png" />
                            </image>
@@ -230,17 +230,17 @@
                <children>
                   <ButtonBar layoutX="14.0" prefHeight="31.0" prefWidth="298.0" AnchorPane.rightAnchor="-14.0">
                      <buttons>
-                        <Button fx:id="bplas" mnemonicParsing="false" onAction="#onClick_btnPlas" prefHeight="9.0" text="Додати">
+                        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="9.0" text="Додати">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="bedit" mnemonicParsing="false" text="Редагувати">
+                        <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#actionButtonPressed" text="Редагувати">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="bdel" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Видалити">
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="25.0" prefWidth="107.0" text="Видалити">
                            <font>
                               <Font size="11.0" />
                            </font>

@@ -1,6 +1,7 @@
 package ua.elips.objects;
 
 import ua.elips.geoProblem.OgzCK42;
+import ua.elips.interfaces.impls.CollectionGapTable;
 
 import static ua.elips.controller.Controller.xVp;
 import static ua.elips.controller.Controller.yVp;
@@ -16,16 +17,20 @@ public class Calculate {
     private double vd, vb;
 //    public double xVp;
 //    public double yVp;
+     private Gap gap;
+
 
 
     public String culculateDGap() {
-        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45000.9, 96000.6);
+//        this.gap = gap;
+//        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, Double.parseDouble(gap.getX()), Double.parseDouble(gap.getY()));
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 55055.5, 96066.2);
         dGap = ogzCK42.getDistance();
         return Double.toString(Math.rint(dGap * 100) / 100).replace(".", ",");
     }
 
     public String culculateAGap() {
-        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45000.9, 96000.6);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 55055.5, 96066.2);
         aGap = ogzCK42.getAngle();
         return Double.toString(Math.rint(aGap * 100) / 100).replace(".", ",");
     }
@@ -41,7 +46,7 @@ public class Calculate {
     }
 
     public String calculateXcgr() {
-        xCgr = 55254.2;
+        xCgr = 45254.2;
 //        int i = 0;
 //
 //        for (Gap gap : gapList) {

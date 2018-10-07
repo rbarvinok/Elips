@@ -7,45 +7,34 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-//import ru.javabegin.training.fastjava2.javafx.objects.Person;
-//import ru.javabegin.training.fastjava2.javafx.utils.DialogManager;
+import ua.elips.objects.DialogManeger;
+import ua.elips.objects.Gap;
 
 import java.net.URL;
-import java.util.Locale;
+
 import java.util.ResourceBundle;
 
 public class EditDialogController {
-   // public class EditDialogController implements Initializable {
+    DialogManeger dm = new DialogManeger();
 
-        @FXML
-        private Button btnOk;
+    @FXML
+    private TextField txtX;
+    @FXML
+    private TextField txtY;
 
-        @FXML
-        private Button btnCancel;
+    private Gap gap;
 
-        @FXML
-        private TextField txtFIO;
-
-        @FXML
-        private TextField txtPhone;
-    /*
-
-    private Person person;
-
-    private ResourceBundle resourceBundle;
-
-
-    public void setPerson(Person person) {
-        if (person == null){
+    public void setGap(Gap gap) {
+        if (gap == null) {
             return;
         }
-        this.person = person;
-        txtFIO.setText(person.getFio());
-        txtPhone.setText(person.getPhone());
+        this.gap = gap;
+        txtX.setText(gap.getX());
+        txtY.setText(gap.getY());
     }
 
-    public Person getPerson() {
-        return person;
+    public Gap getGap() {
+        return gap;
     }
 
     public void actionClose(ActionEvent actionEvent) {
@@ -54,28 +43,31 @@ public class EditDialogController {
         stage.hide();
     }
 
-
     public void actionSave(ActionEvent actionEvent) {
-        if (!checkValues()){
+        if (!checkValues()) {
             return;
         }
-        person.setFio(txtFIO.getText());
-        person.setPhone(txtPhone.getText());
+
+        try {
+            Double.parseDouble(txtX.getText());
+            Double.parseDouble(txtY.getText());
+        } catch (NumberFormatException e) {
+            dm.alert();
+            return;
+        }
+
+        gap.setX(txtX.getText());
+        gap.setY(txtY.getText());
         actionClose(actionEvent);
     }
 
     private boolean checkValues() {
-        if (txtFIO.getText().trim().length()==0 || txtPhone.getText().trim().length()==0){
-            DialogManager.showInfoDialog(resourceBundle.getString("error"), resourceBundle.getString("fill_field"));
+        if (txtX.getText().trim().length() == 0 || txtY.getText().trim().length() == 0) {
+            dm.alert();
             return false;
         }
-
         return true;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.resourceBundle = resources;
-    }
-    */
-    }
+}
+
