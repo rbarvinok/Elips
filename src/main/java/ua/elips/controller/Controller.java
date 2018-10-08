@@ -32,8 +32,7 @@ public class Controller extends Observable implements Initializable {
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
-    public static double xVp;
-    public static double yVp;
+
 
     @FXML
     public TextField x_Vp, y_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
@@ -75,8 +74,8 @@ public class Controller extends Observable implements Initializable {
         col_y.setCellValueFactory(cellData -> cellData.getValue().yProperty());
         col_d.setCellValueFactory(cellData -> cellData.getValue().dProperty());
         col_a.setCellValueFactory(cellData -> cellData.getValue().aProperty());
-        col_dd.setCellValueFactory(cellData -> cellData.getValue().ddProperty());
-        col_db.setCellValueFactory(cellData -> cellData.getValue().dbProperty());
+        col_dd.setCellValueFactory(cellData -> cellData.getValue().dDProperty());
+        col_db.setCellValueFactory(cellData -> cellData.getValue().dBProperty());
 
         initListeners();
         fillData();
@@ -236,8 +235,11 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void updateCoordinateVP() {
-        xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
-        yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
+        Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
+        Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
+        calc.UpdateXYvp(xVp, yVp);
+//        System.out.println(calc.xVp);
+//
     }
 
     public void onClick_menuExit(ActionEvent actionEvent) {
@@ -296,6 +298,5 @@ public class Controller extends Observable implements Initializable {
         stage.setScene(new Scene(root2));
         stage.show();
     }
-
 
 }

@@ -12,8 +12,8 @@ public class Gap {
     private final StringProperty y;
     private final StringProperty d;
     private final StringProperty a;
-    private final StringProperty dd;
-    private final StringProperty db;
+    private final StringProperty dD;
+    private final StringProperty dB;
 
  //* Пустой конструктор.
     public Gap () {
@@ -22,19 +22,19 @@ public class Gap {
         this.y = new SimpleStringProperty("");
         this.d = new SimpleStringProperty("");
         this.a = new SimpleStringProperty("");
-        this.dd = new SimpleStringProperty("");
-        this.db = new SimpleStringProperty("");
+        this.dD = new SimpleStringProperty("");
+        this.dB = new SimpleStringProperty("");
     }
 
 //Констрултор
-    public Gap(Integer id, String x, String y, String d, String a, String dd, String db) {
+    public Gap(Integer id, String x, String y, String d, String a, String dD, String dB) {
         this.id = new SimpleIntegerProperty(id);
         this.x = new SimpleStringProperty(x);
         this.y = new SimpleStringProperty(y);
         this.d = new SimpleStringProperty(d);
         this.a = new SimpleStringProperty(a);
-        this.dd = new SimpleStringProperty(dd);
-        this.db = new SimpleStringProperty(db);
+        this.dD = new SimpleStringProperty(dD);
+        this.dB = new SimpleStringProperty(dB);
     }
 
     public int getId() {
@@ -97,28 +97,28 @@ public class Gap {
         this.a.set(a);
     }
 
-    public String getDd() {
-        return dd.get();
+    public String getDD() {
+        return dD.get();
     }
 
-    public StringProperty ddProperty() {
-        return dd;
+    public StringProperty dDProperty() {
+        return dD;
     }
 
-    public void setDd(String dd) {
-        this.dd.set(dd);
+    public void setdD(String dD) {
+        this.dD.set(dD);
     }
 
-    public String getDb() {
-        return db.get();
+    public String getDB() {
+        return dB.get();
     }
 
-    public StringProperty dbProperty() {
-        return db;
+    public StringProperty dBProperty() {
+        return dB;
     }
 
-    public void setDb(String db) {
-        this.db.set(db);
+    public void setdB(String dB) {
+        this.dB.set(dB);
     }
 
 }

@@ -48,8 +48,8 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void fillTestData() {
         int namber = 1;
-        gapList.add(new Gap(namber++, "45000.9", "96000.6", calc.culculateDGap(), calc.culculateAGap(), calc.calculateDd(), calc.calculateDb()));
-        gapList.add(new Gap(namber++, "45555.5", "96888.3", "450.0", "15.5", "2.5", "5.8"));
+        gapList.add(new Gap(namber++, "45000.9", "96000.6", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
+        gapList.add(new Gap(namber++, "45555.5", "96888.3", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
         gapList.add(new Gap(namber++, "45877.2", "96850.2", "420.0", "14.5", "3.5", "5.4"));
         gapList.add(new Gap(namber++, "47777.2", "32550.2", "420.0", "14.5", "0.5", "0.4"));
 

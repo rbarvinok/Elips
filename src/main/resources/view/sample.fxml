@@ -158,7 +158,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="200.0" promptText="47720" fx:id="x_Vp">
+                  <TextField onDragDone="#updateCoordinateVP" prefHeight="25.0" prefWidth="200.0" promptText="47720" fx:id="x_Vp">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>

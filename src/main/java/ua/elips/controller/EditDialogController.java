@@ -2,20 +2,18 @@ package ua.elips.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import ua.elips.interfaces.impls.CollectionGapTable;
+import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
-import java.net.URL;
-
-import java.util.ResourceBundle;
-
 public class EditDialogController {
     DialogManeger dm = new DialogManeger();
+    private Calculate calc = new Calculate();
+    private CollectionGapTable gapTableImpl = new CollectionGapTable();
 
     @FXML
     private TextField txtX;
@@ -55,9 +53,13 @@ public class EditDialogController {
             dm.alert();
             return;
         }
-
+        gap.setId(gapTableImpl.getGapList().size());
         gap.setX(txtX.getText());
         gap.setY(txtY.getText());
+        gap.setD(calc.calculateDGap());
+        gap.setA(calc.calculateAGap());
+        gap.setdD(calc.calculateDd());
+        gap.setdB(calc.calculateDb());
         actionClose(actionEvent);
     }
 

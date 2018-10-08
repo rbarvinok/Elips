@@ -30,12 +30,12 @@
    <center>
       <VBox minWidth="200.0" prefHeight="82.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="txtX" prefHeight="31.0" prefWidth="120.0">
+            <TextField fx:id="txtX" prefHeight="18.0" prefWidth="190.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="txtY" prefHeight="32.0" prefWidth="190.0">
+            <TextField fx:id="txtY" prefHeight="23.0" prefWidth="190.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
