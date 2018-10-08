@@ -60,14 +60,14 @@
                     <items>
                       <MenuItem fx:id="mPgzCK42" mnemonicParsing="false" onAction="#onClick_menuPGZ" text="Пряма задача" />
                         <MenuItem fx:id="mOgzCK42" mnemonicParsing="false" onAction="#onClick_menuOGZ" text="Обернена задача" />
-                        <MenuItem mnemonicParsing="false" text="Конвертор в WGS-84" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Конвертор в WGS-84" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="WGS-84">
                     <items>
                       <MenuItem fx:id="mPgzWGS" mnemonicParsing="false" onAction="#onClick_menuPGZ84" text="Пряма задача" />
                       <MenuItem fx:id="mOgzWGS" mnemonicParsing="false" onAction="#onClick_menuOGZ84" text="Обернена задача" />
-                        <MenuItem mnemonicParsing="false" text="Конвертор в СК-42" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Конвертор в СК-42" />
                     </items>
                   </Menu>
               </items>
