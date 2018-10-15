@@ -11,33 +11,34 @@ public class Calculate {
     private double dB;
     private double xCgr, yCgr, dCgr, aCgr;
     private double vd, vb;
-    public double xVp;
-    public double yVp;
+    public static double xVp, yVp;
+    public static double xGap, yGap;
     private Gap gap;
 
-   // private CollectionGapTable gapTableImpl = new CollectionGapTable();
+//    private CollectionGapTable gapTableImpl = new CollectionGapTable();
+    // Gap selectedGap = (Gap) tableGap.getSelectionModel().getSelectedIndex();
 
     public void UpdateXYvp(Double xVp, Double yVp) {
         this.xVp = xVp;
         this.yVp = yVp;
     }
+
     public void UpdateXYgap(Double xGap, Double yGap) {
-        //this.xGap = xGap;
-        //this.yGap = yGap;
+        this.xGap = xGap;
+        this.yGap = yGap;
     }
 
     public String calculateDGap() {
-        UpdateXYvp(xVp, yVp);
-        this.gap = gap;
-        //OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, Double.parseDouble(gap.getX()), Double.parseDouble(gap.getY()));
+        // OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, xGap, yGap);
+        // OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, Double.parseDouble(gap.getX()), Double.parseDouble(gap.getY()));
+        System.out.println(xVp);
+        System.out.println(xGap);
         OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45055.5, 96066.2);
         dGap = ogzCK42.getDistance();
-//        dGap = xVp;
         return Double.toString(Math.rint(dGap * 100) / 100).replace(".", ",");
     }
 
     public String calculateAGap() {
-        UpdateXYvp(xVp, yVp);
         OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45055.5, 96066.2);
         aGap = ogzCK42.getAngle();
         return Double.toString(Math.rint(aGap * 100) / 100).replace(".", ",");

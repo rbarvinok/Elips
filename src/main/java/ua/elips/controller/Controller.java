@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -100,6 +101,7 @@ public class Controller extends Observable implements Initializable {
 
 
     private void initListeners() {
+        // слушает изменения координат ВП
 
         // слушает изменения в коллекции для обновления надписи "Кол-во записей"
         gapTableImpl.getGapList().addListener(new ListChangeListener<Gap>() {
@@ -238,8 +240,6 @@ public class Controller extends Observable implements Initializable {
         Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
         Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
         calc.UpdateXYvp(xVp, yVp);
-//        System.out.println(calc.xVp);
-//
     }
 
     public void onClick_menuExit(ActionEvent actionEvent) {

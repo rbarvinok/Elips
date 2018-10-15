@@ -43,7 +43,6 @@ public class CollectionGapTable implements GapTableInterface {
     }
 
 
-
     Calculate calc = new Calculate();
 
     public void fillTestData() {
