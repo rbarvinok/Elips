@@ -10,6 +10,9 @@ import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
+import static ua.elips.objects.Calculate.xGap;
+import static ua.elips.objects.Calculate.yGap;
+
 public class EditDialogController {
     DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
@@ -53,7 +56,8 @@ public class EditDialogController {
             dm.alert();
             return;
         }
-        gap.setId(gapTableImpl.getGapList().size());
+        GetXYgap();
+        gap.setId(calc.calculateId());
         gap.setX(txtX.getText());
         gap.setY(txtY.getText());
         gap.setD(calc.calculateDGap());
@@ -61,6 +65,11 @@ public class EditDialogController {
         gap.setdD(calc.calculateDd());
         gap.setdB(calc.calculateDb());
         actionClose(actionEvent);
+    }
+
+    public void GetXYgap() {
+        xGap = Double.parseDouble(txtX.getText());
+        yGap = Double.parseDouble(txtY.getText());
     }
 
     private boolean checkValues() {

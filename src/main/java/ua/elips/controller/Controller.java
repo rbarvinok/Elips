@@ -81,7 +81,7 @@ public class Controller extends Observable implements Initializable {
         initListeners();
         fillData();
         initLoader();
-        gapTableImpl.print();
+        //gapTableImpl.print();
     }
 
     public void setMainStage(Stage mainStage) {
@@ -121,7 +121,9 @@ public class Controller extends Observable implements Initializable {
     }
 
     private void updateCount() {
-        gapCount.setText(Integer.toString(gapTableImpl.getGapList().size()));
+        int count=gapTableImpl.getGapList().size();
+        gapCount.setText(Integer.toString(count));
+        calc.GetCount(count);
     }
 
     private void initLoader() {

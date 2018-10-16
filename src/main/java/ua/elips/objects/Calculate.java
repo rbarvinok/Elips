@@ -1,10 +1,10 @@
 package ua.elips.objects;
 
 import ua.elips.geoProblem.OgzCK42;
-import ua.elips.interfaces.impls.CollectionGapTable;
 
 public class Calculate {
 
+    private int id, count;
     private double dGap;
     private double aGap;
     private double dD;
@@ -13,33 +13,29 @@ public class Calculate {
     private double vd, vb;
     public static double xVp, yVp;
     public static double xGap, yGap;
-    private Gap gap;
-
-//    private CollectionGapTable gapTableImpl = new CollectionGapTable();
-    // Gap selectedGap = (Gap) tableGap.getSelectionModel().getSelectedIndex();
 
     public void UpdateXYvp(Double xVp, Double yVp) {
         this.xVp = xVp;
         this.yVp = yVp;
     }
 
-    public void UpdateXYgap(Double xGap, Double yGap) {
-        this.xGap = xGap;
-        this.yGap = yGap;
-    }
-
     public String calculateDGap() {
-        // OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, xGap, yGap);
-        // OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, Double.parseDouble(gap.getX()), Double.parseDouble(gap.getY()));
-        System.out.println(xVp);
-        System.out.println(xGap);
-        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45055.5, 96066.2);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, xGap, yGap);
         dGap = ogzCK42.getDistance();
         return Double.toString(Math.rint(dGap * 100) / 100).replace(".", ",");
     }
 
+    public Integer GetCount(Integer count) {
+        return count;
+    }
+
+    public Integer calculateId() {
+        id = 1 + count++;
+        return id;
+    }
+
     public String calculateAGap() {
-        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, 45055.5, 96066.2);
+        OgzCK42 ogzCK42 = new OgzCK42(xVp, yVp, xGap, yGap);
         aGap = ogzCK42.getAngle();
         return Double.toString(Math.rint(aGap * 100) / 100).replace(".", ",");
     }
