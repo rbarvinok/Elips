@@ -47,21 +47,13 @@ public class Calculate {
     }
 
     public String calculateXcgr() {
-        // xCgr = 45254.2;
-        //System.out.println(Double.toString(xCgr));
         if (count > 0) {
-            System.out.println(Double.toString(xCgr/count));
             return Double.toString(Math.rint(xCgr / count * 100) / 100).replace(".", ",");
         } else return "0";
     }
 
-
-
     public String calculateYcgr() {
-        //yCgr = 96201.0;
-       // System.out.println(Double.toString(yCgr));
         if (count > 0) {
-            System.out.println(Double.toString(yCgr / count));
             return Double.toString(Math.rint(yCgr / count * 100) / 100).replace(".", ",");
         } else return "0";
     }

@@ -46,12 +46,18 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void CoordCgr() {
         int nam = 0;
+
         for (Gap gap : gapList) {
+            nam++;
+            if (nam < 2){
             x = Double.parseDouble(gap.getX());
             y = Double.parseDouble(gap.getY());
-            nam++;
-            x = x + Double.parseDouble(gap.getX());
-            y = y + Double.parseDouble(gap.getY());
+          }
+            else {
+                //System.out.println(nam);
+                x = (x + Double.parseDouble(gap.getX()));
+                y = (y + Double.parseDouble(gap.getY()));
+            }
         }
         calc.GetCoordinateCgr(x, y);
     }
