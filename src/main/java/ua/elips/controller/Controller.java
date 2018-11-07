@@ -124,6 +124,7 @@ public class Controller extends Observable implements Initializable {
         int count=gapTableImpl.getGapList().size();
         gapCount.setText(Integer.toString(count));
         calc.GetCount(count);
+        gapTableImpl.CoordCgr();
     }
 
     private void initLoader() {
@@ -301,4 +302,10 @@ public class Controller extends Observable implements Initializable {
         stage.show();
     }
 
+    public void OnClickNew(ActionEvent actionEvent) {
+        initListeners();
+        fillData();
+        gapTableImpl.print();
+
+    }
 }

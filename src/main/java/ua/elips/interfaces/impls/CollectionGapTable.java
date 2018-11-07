@@ -10,6 +10,8 @@ import ua.elips.objects.Gap;
 public class CollectionGapTable implements GapTableInterface {
 
     public ObservableList<Gap> gapList = FXCollections.observableArrayList();
+    Calculate calc = new Calculate();
+    public double x, y;
 
     @Override
     public void add(Gap gap) {
@@ -42,17 +44,24 @@ public class CollectionGapTable implements GapTableInterface {
         }
     }
 
-
-    Calculate calc = new Calculate();
+    public void CoordCgr() {
+        int nam = 0;
+        for (Gap gap : gapList) {
+            x = Double.parseDouble(gap.getX());
+            y = Double.parseDouble(gap.getY());
+            nam++;
+            x = x + Double.parseDouble(gap.getX());
+            y = y + Double.parseDouble(gap.getY());
+        }
+        calc.GetCoordinateCgr(x, y);
+    }
 
     public void fillTestData() {
-        int namber = 1;
+//        int namber = 1;
 //        gapList.add(new Gap(namber++, "45000.9", "96000.6", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
 //        gapList.add(new Gap(namber++, "45555.5", "96888.3", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
 //        gapList.add(new Gap(namber++, "45877.2", "96850.2", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
 //        gapList.add(new Gap(namber++, "47777.2", "32550.2", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
-
     }
-
 }
 
