@@ -49,14 +49,14 @@ public class CollectionGapTable implements GapTableInterface {
 
         for (Gap gap : gapList) {
             nam++;
-            if (nam < 2){
+            if (nam == 1){
             x = Double.parseDouble(gap.getX());
             y = Double.parseDouble(gap.getY());
           }
             else {
                 //System.out.println(nam);
-                x = (x + Double.parseDouble(gap.getX()));
-                y = (y + Double.parseDouble(gap.getY()));
+                x = x + Double.parseDouble(gap.getX());
+                y = y + Double.parseDouble(gap.getY());
             }
         }
         calc.GetCoordinateCgr(x, y);

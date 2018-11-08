@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" onMouseDragOver="#OnClick_btnAboutExit" prefHeight="527.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.controller.Controller_about">
+<AnchorPane focusTraversable="true" onMouseDragOver="#OnClick_btnAboutExit" prefHeight="527.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.controller.Controller_about">
    <children>
       <ImageView fitHeight="557.0" fitWidth="690.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -67,6 +67,11 @@
          <effect>
             <DropShadow spread="0.35" />
          </effect>
+      </Label>
+      <Label layoutX="273.0" layoutY="387.0" prefHeight="27.0" prefWidth="147.0" text="Версія 1.00.01" textFill="#c30d0d">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
       </Label>
    </children>
    <effect>
