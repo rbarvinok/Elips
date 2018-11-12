@@ -37,10 +37,11 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void print() {
         int i = 0;
-        System.out.println();
+        //System.out.println();
         for (Gap gap : gapList) {
             i++;
-            System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY());
+            System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
+
         }
     }
 

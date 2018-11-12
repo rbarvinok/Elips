@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.controller.Controller">
+<VBox prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.controller.Controller">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -88,14 +88,32 @@
             </Label>
             <ToolBar layoutX="1.0" prefHeight="25.0" prefWidth="709.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                <items>
-                  <Button fx:id="tNew" mnemonicParsing="false" onAction="#OnClickNew" prefHeight="25.0" prefWidth="30.0" text="New" />
+                  <Button fx:id="tNew" lineSpacing="1.0" mnemonicParsing="false" onAction="#OnClickNew" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/new.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Новий бланк" />
+                     </tooltip></Button>
+                  <Button fx:id="tSave" mnemonicParsing="false" onAction="#OnClickSave" styleClass="button1" stylesheets="@../styles/day.css">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/save.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0" />
-                  <Button fx:id="tAdd" lineSpacing="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" textFill="#07e31e" wrapText="true">
+                  <Button fx:id="tAdd" lineSpacing="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#07e31e" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tAdd" fitHeight="15.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
+                        <ImageView fx:id="tAdd" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
                            <image>
                               <Image url="@../images/+2.png" />
                            </image>
@@ -108,12 +126,12 @@
                         <Insets />
                      </opaqueInsets>
                      <tooltip>
-                        <Tooltip opacity="0.8" text="Додати" textAlignment="CENTER" textOverrun="CLIP" />
+                        <Tooltip opacity="0.8" text="Додати постріл" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" textFill="#2b07e3">
+                  <Button fx:id="tEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#2b07e3">
                      <graphic>
-                        <ImageView fx:id="tEdit" fitHeight="15.0" fitWidth="17.0" onDragDetected="#actionButtonPressed" pickOnBounds="true">
+                        <ImageView fx:id="tEdit" fitHeight="17.0" fitWidth="17.0" onDragDetected="#actionButtonPressed" pickOnBounds="true">
                            <image>
                               <Image url="@../images/edit1.png" />
                            </image>
@@ -129,12 +147,12 @@
                         <Tooltip opacity="0.8" text="Редагувати" textAlignment="CENTER" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tDelete" minHeight="23.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="0.0" prefWidth="32.0" textFill="#e40606">
+                  <Button fx:id="tDelete" minHeight="23.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="0.0" prefWidth="32.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#e40606">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tDelete" fitHeight="12.0" fitWidth="15.0" onDragDetected="#actionButtonPressed" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tDelete" fitHeight="17.0" fitWidth="17.0" onDragDetected="#actionButtonPressed" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/-.png" />
                            </image>
@@ -336,7 +354,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="vd" editable="false" layoutX="75.0" layoutY="68.0" prefHeight="24.0" prefWidth="127.0">
+                  <TextField fx:id="_vd" editable="false" layoutX="75.0" layoutY="68.0" prefHeight="24.0" prefWidth="127.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>
@@ -349,7 +367,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="vb" editable="false" layoutX="239.0" layoutY="68.0" prefHeight="24.0" prefWidth="127.0">
+                  <TextField fx:id="_vb" editable="false" layoutX="239.0" layoutY="68.0" prefHeight="24.0" prefWidth="127.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </opaqueInsets>

@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
+import ua.elips.objects.Clear;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
@@ -25,20 +26,24 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+import static ua.elips.objects.Calculate.*;
+import static ua.elips.objects.Clear.clear;
+
 public class Controller extends Observable implements Initializable {
 
     private CollectionGapTable gapTableImpl = new CollectionGapTable();
     private DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
+    //private Clear clear = new Clear();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
 
 
     @FXML
-    public TextField x_Vp, y_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
+    public TextField x_Vp, y_Vp, h_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
     @FXML
-    public TextField vd, vb;
+    public TextField _vd, _vb;
     @FXML
     public Button btnOk;
     @FXML
@@ -81,7 +86,7 @@ public class Controller extends Observable implements Initializable {
         initListeners();
         fillData();
         initLoader();
-        //gapTableImpl.print();
+
     }
 
     public void setMainStage(Stage mainStage) {
@@ -121,7 +126,7 @@ public class Controller extends Observable implements Initializable {
     }
 
     private void updateCount() {
-        int count=gapTableImpl.getGapList().size();
+        int count = gapTableImpl.getGapList().size();
         gapCount.setText(Integer.toString(count));
         calc.GetCount(count);
         gapTableImpl.CoordCgr();
@@ -235,8 +240,8 @@ public class Controller extends Observable implements Initializable {
         y_cgr.setText(calc.calculateYcgr().replace(".", ","));
         a_cgr.setText(calc.calculateAcgr().replace(".", ","));
         d_cgr.setText(calc.calculateDcgr().replace(".", ","));
-        vd.setText(calc.calculateVd().replace(".", ","));
-        vb.setText(calc.calculateVb().replace(".", ","));
+        _vd.setText(calc.calculateVd().replace(".", ","));
+        _vb.setText(calc.calculateVb().replace(".", ","));
     }
 
     public void updateCoordinateVP() {
@@ -303,9 +308,18 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void OnClickNew(ActionEvent actionEvent) {
-        initListeners();
+        clear(x_Vp, y_Vp, h_Vp);
+        //initListeners();
         fillData();
-        gapTableImpl.print();
+       // initLoader();
 
+    }
+
+    public void OnClickSave(ActionEvent actionEvent) {
+        System.out.println();
+        System.out.println("Координати вогневої позиції: \n X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp + "\n Координати розривіів:");
+        gapTableImpl.print();
+        System.out.println("Координати центру групи розривів: \n X = " + xCgr + ", Y = " + yCgr);
+        System.out.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
     }
 }
