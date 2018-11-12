@@ -208,7 +208,6 @@ public class Controller extends Observable implements Initializable {
         return true;
     }
 
-
     private void showDialog() {
 
         if (editDialogStage == null) {
@@ -226,7 +225,6 @@ public class Controller extends Observable implements Initializable {
         editDialogStage.showAndWait(); // для ожидания закрытия окна
 
     }
-
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void onClick_OK(ActionEvent actionEvent) {
@@ -309,17 +307,18 @@ public class Controller extends Observable implements Initializable {
 
     public void OnClickNew(ActionEvent actionEvent) {
         clear(x_Vp, y_Vp, h_Vp);
-        //initListeners();
-        fillData();
-       // initLoader();
-
+        gapTableImpl.gapList.clear();
     }
 
     public void OnClickSave(ActionEvent actionEvent) {
         System.out.println();
-        System.out.println("Координати вогневої позиції: \n X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp + "\n Координати розривіів:");
+        System.out.println("Координати вогневої позиції: \n X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp +
+                "\nКількість пострілів - " + count + "\n\nКоординати розривіів:");
         gapTableImpl.print();
-        System.out.println("Координати центру групи розривів: \n X = " + xCgr + ", Y = " + yCgr);
+        System.out.println();
+        System.out.println("Центр групи розривів: \nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
+        System.out.println("Відстань від вогневої позиції: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
+        System.out.println();
         System.out.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
     }
 }

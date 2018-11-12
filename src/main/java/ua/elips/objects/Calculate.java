@@ -20,8 +20,8 @@ public class Calculate {
         this.yVp = yVp;
     }
 
-    public Integer GetCount(Integer count) {
-        return count;
+    public void GetCount(Integer count) {
+        this.count=count;
     }
 
     public void GetCoordinateCgr(Double xCgr, Double yCgr) {

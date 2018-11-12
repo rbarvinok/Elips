@@ -30,9 +30,26 @@ public class CollectionGapTable implements GapTableInterface {
         gapList.remove(gap);
     }
 
-
     public ObservableList<Gap> getGapList() {
         return gapList;
+    }
+
+    public void CoordCgr() {
+        int nam = 0;
+
+        for (Gap gap : gapList) {
+            nam++;
+            if (nam == 1){
+                x = Double.parseDouble(gap.getX());
+                y = Double.parseDouble(gap.getY());
+            }
+            else {
+                //System.out.println(nam);
+                x = x + Double.parseDouble(gap.getX());
+                y = y + Double.parseDouble(gap.getY());
+            }
+        }
+        calc.GetCoordinateCgr(x, y);
     }
 
     public void print() {
@@ -43,24 +60,6 @@ public class CollectionGapTable implements GapTableInterface {
             System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
 
         }
-    }
-
-    public void CoordCgr() {
-        int nam = 0;
-
-        for (Gap gap : gapList) {
-            nam++;
-            if (nam == 1){
-            x = Double.parseDouble(gap.getX());
-            y = Double.parseDouble(gap.getY());
-          }
-            else {
-                //System.out.println(nam);
-                x = x + Double.parseDouble(gap.getX());
-                y = y + Double.parseDouble(gap.getY());
-            }
-        }
-        calc.GetCoordinateCgr(x, y);
     }
 
     public void fillTestData() {
