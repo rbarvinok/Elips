@@ -14,7 +14,7 @@ public class Calculate {
     public static double vd, vb;
     public static double xVp, yVp;
     public static double xGap, yGap;
-    public double pow_dD, pow_dB;
+    public static double pow_dD, pow_dB;
 
     public void UpdateXYvp(Double xVp, Double yVp) {
         this.xVp = xVp;
@@ -91,19 +91,16 @@ public class Calculate {
     }
 
     public String calculateVd() {
-
-        System.out.println(Double.toString(pow_dD));
         if (count>1)
-            vd = 0.6745 * Math.sqrt(pow_dD / (count - 1));
+            vd = Math.rint(0.6745 * Math.sqrt(pow_dD / (count - 1))*100)/100;
         else vd = 0;
-            return Double.toString(Math.rint(vd * 100) / 100).replace(".", ",");
-
+            return Double.toString(vd).replace(".", ",");
     }
 
     public String calculateVb() {
         if (count>1)
-            vb = 0.6745 * Math.sqrt(pow_dB / (count - 1));
+            vb = Math.rint(0.6745 * Math.sqrt(pow_dB / (count - 1))*100)/100;
         else vb = 0;
-            return Double.toString(Math.rint(vb * 100) / 100).replace(".", ",");
+            return Double.toString(vb).replace(".", ",");
            }
 }

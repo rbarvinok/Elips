@@ -12,7 +12,7 @@ public class CollectionGapTable implements GapTableInterface {
     public ObservableList<Gap> gapList = FXCollections.observableArrayList();
     Calculate calc = new Calculate();
     public double x, y;
-    public double pow_dD,pow_dB;
+    public double pow_dD, pow_dB;
 
     @Override
     public void add(Gap gap) {
@@ -40,11 +40,10 @@ public class CollectionGapTable implements GapTableInterface {
 
         for (Gap gap : gapList) {
             nam++;
-            if (nam == 1){
+            if (nam == 1) {
                 x = Double.parseDouble(gap.getX());
                 y = Double.parseDouble(gap.getY());
-            }
-            else {
+            } else {
                 //System.out.println(nam);
                 x = x + Double.parseDouble(gap.getX());
                 y = y + Double.parseDouble(gap.getY());
@@ -54,22 +53,21 @@ public class CollectionGapTable implements GapTableInterface {
     }
 
     public void CalculatePowDdDb() {
-        int nam = 0;
+        int n = 0;
 
         for (Gap gap : gapList) {
-            nam++;
-            if (nam ==1){
-                pow_dD = Math.pow(Double.parseDouble(gap.getDD()),2);
-                pow_dB = Math.pow(Double.parseDouble(gap.getDB()),2);
+            //System.out.println("ffffff=   " + Double.parseDouble(gap.getDD().replace(",", ".")));
+            n++;
+            if (n == 1) {
+                pow_dD = Math.pow(Double.parseDouble(gap.getDD().replace(",", ".")), 2);
+                pow_dB = Math.pow(Double.parseDouble(gap.getDB().replace(",", ".")), 2);
 
+            } else {
+                pow_dD = pow_dD + Math.pow(Double.parseDouble(gap.getDD().replace(",", ".")), 2);
+                pow_dB = pow_dB + Math.pow(Double.parseDouble(gap.getDB().replace(",", ".")), 2);
             }
-            else {
-//                //System.out.println(nam);
-                pow_dD = pow_dD + Math.pow(Double.parseDouble(gap.getDD()), 2);
-                pow_dB = pow_dB + Math.pow(Double.parseDouble(gap.getDB()), 2);
-          }
-      }
-     calc.GetPowDdDb(pow_dD,pow_dB);
+        }
+        calc.GetPowDdDb(pow_dD, pow_dB);
     }
 
     public void print() {
