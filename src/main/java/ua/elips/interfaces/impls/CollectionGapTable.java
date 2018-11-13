@@ -12,6 +12,7 @@ public class CollectionGapTable implements GapTableInterface {
     public ObservableList<Gap> gapList = FXCollections.observableArrayList();
     Calculate calc = new Calculate();
     public double x, y;
+    public double pow_dD,pow_dB;
 
     @Override
     public void add(Gap gap) {
@@ -50,6 +51,25 @@ public class CollectionGapTable implements GapTableInterface {
             }
         }
         calc.GetCoordinateCgr(x, y);
+    }
+
+    public void CalculatePowDdDb() {
+        int nam = 0;
+
+        for (Gap gap : gapList) {
+            nam++;
+            if (nam ==1){
+                pow_dD = Math.pow(Double.parseDouble(gap.getDD()),2);
+                pow_dB = Math.pow(Double.parseDouble(gap.getDB()),2);
+
+            }
+            else {
+//                //System.out.println(nam);
+                pow_dD = pow_dD + Math.pow(Double.parseDouble(gap.getDD()), 2);
+                pow_dB = pow_dB + Math.pow(Double.parseDouble(gap.getDB()), 2);
+          }
+      }
+     calc.GetPowDdDb(pow_dD,pow_dB);
     }
 
     public void print() {

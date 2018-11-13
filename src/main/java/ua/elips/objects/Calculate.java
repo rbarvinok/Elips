@@ -14,6 +14,7 @@ public class Calculate {
     public static double vd, vb;
     public static double xVp, yVp;
     public static double xGap, yGap;
+    public double pow_dD, pow_dB;
 
     public void UpdateXYvp(Double xVp, Double yVp) {
         this.xVp = xVp;
@@ -21,12 +22,12 @@ public class Calculate {
     }
 
     public void GetCount(Integer count) {
-        this.count=count;
+        this.count = count;
     }
 
     public void GetCoordinateCgr(Double xCgr, Double yCgr) {
-        this.xCgr = xCgr;
-        this.yCgr = yCgr;
+        this.xCgr = xCgr / count;
+        this.yCgr = yCgr / count;
     }
 
     public Integer calculateId() {
@@ -48,13 +49,13 @@ public class Calculate {
 
     public String calculateXcgr() {
         if (count > 0) {
-            return Double.toString(Math.rint(xCgr / count * 100) / 100).replace(".", ",");
+            return Double.toString(Math.rint(xCgr * 100) / 100).replace(".", ",");
         } else return "0";
     }
 
     public String calculateYcgr() {
         if (count > 0) {
-            return Double.toString(Math.rint(yCgr / count * 100) / 100).replace(".", ",");
+            return Double.toString(Math.rint(yCgr * 100) / 100).replace(".", ",");
         } else return "0";
     }
 
@@ -84,14 +85,25 @@ public class Calculate {
         return Double.toString(Math.rint(dB * 100) / 100).replace(".", ",");
     }
 
-    public String calculateVd() {
-        vd = 58;
+    public void GetPowDdDb(Double pow_dD, Double pow_dB) {
+        this.pow_dD = pow_dD;
+        this.pow_dB = pow_dB;
+    }
 
-        return Double.toString(Math.rint(vd * 100) / 100).replace(".", ",");
+    public String calculateVd() {
+
+        System.out.println(Double.toString(pow_dD));
+        if (count>1)
+            vd = 0.6745 * Math.sqrt(pow_dD / (count - 1));
+        else vd = 0;
+            return Double.toString(Math.rint(vd * 100) / 100).replace(".", ",");
+
     }
 
     public String calculateVb() {
-        vb = 65.2;
-        return Double.toString(Math.rint(vb * 100) / 100).replace(".", ",");
-    }
+        if (count>1)
+            vb = 0.6745 * Math.sqrt(pow_dB / (count - 1));
+        else vb = 0;
+            return Double.toString(Math.rint(vb * 100) / 100).replace(".", ",");
+           }
 }

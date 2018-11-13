@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,7 +16,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
-import ua.elips.objects.Clear;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
@@ -34,11 +32,10 @@ public class Controller extends Observable implements Initializable {
     private CollectionGapTable gapTableImpl = new CollectionGapTable();
     private DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
-    //private Clear clear = new Clear();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
-
+    public static int count;
 
     @FXML
     public TextField x_Vp, y_Vp, h_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
@@ -107,7 +104,6 @@ public class Controller extends Observable implements Initializable {
 
     private void initListeners() {
         // слушает изменения координат ВП
-
         // слушает изменения в коллекции для обновления надписи "Кол-во записей"
         gapTableImpl.getGapList().addListener(new ListChangeListener<Gap>() {
             @Override
@@ -123,10 +119,11 @@ public class Controller extends Observable implements Initializable {
                 showDialog();
             }
         });
+
     }
 
-    private void updateCount() {
-        int count = gapTableImpl.getGapList().size();
+    public void updateCount() {
+        count = gapTableImpl.getGapList().size();
         gapCount.setText(Integer.toString(count));
         calc.GetCount(count);
         gapTableImpl.CoordCgr();
@@ -159,11 +156,13 @@ public class Controller extends Observable implements Initializable {
 
         switch (clickedButton.getId()) {
             case "btnAdd":
+                updateCoordinateVP();
                 editDialogController.setGap(new Gap());
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
                 break;
             case "tAdd":
+                updateCoordinateVP();
                 editDialogController.setGap(new Gap());
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
@@ -234,6 +233,7 @@ public class Controller extends Observable implements Initializable {
             dm.alert();
             return;
         }
+        //gapTableImpl.CalculatePowDdDb();
         x_cgr.setText(calc.calculateXcgr().replace(".", ","));
         y_cgr.setText(calc.calculateYcgr().replace(".", ","));
         a_cgr.setText(calc.calculateAcgr().replace(".", ","));
