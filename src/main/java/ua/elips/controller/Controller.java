@@ -83,7 +83,7 @@ public class Controller extends Observable implements Initializable {
         initListeners();
         fillData();
         initLoader();
-
+        x_Vp.requestFocus();
     }
 
     public void setMainStage(Stage mainStage) {
@@ -119,7 +119,6 @@ public class Controller extends Observable implements Initializable {
                 showDialog();
             }
         });
-
     }
 
     public void updateCount() {

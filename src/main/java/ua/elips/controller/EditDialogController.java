@@ -16,7 +16,6 @@ import static ua.elips.objects.Calculate.yGap;
 public class EditDialogController {
     DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
-    private CollectionGapTable gapTableImpl = new CollectionGapTable();
 
     @FXML
     private TextField txtX;
