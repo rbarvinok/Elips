@@ -83,7 +83,6 @@ public class Controller extends Observable implements Initializable {
         initListeners();
         fillData();
         initLoader();
-        x_Vp.requestFocus();
     }
 
     public void setMainStage(Stage mainStage) {
@@ -95,12 +94,11 @@ public class Controller extends Observable implements Initializable {
     }
 
     private void fillTable() {
-        gapTableImpl.fillTestData();
+        //gapTableImpl.fillTestData();
         backupList = FXCollections.observableArrayList();
         backupList.addAll(gapTableImpl.getGapList());
         tableGap.setItems(gapTableImpl.getGapList());
     }
-
 
     private void initListeners() {
         // слушает изменения координат ВП
@@ -155,16 +153,20 @@ public class Controller extends Observable implements Initializable {
 
         switch (clickedButton.getId()) {
             case "btnAdd":
-                textFieldUpdate ();
+                textFieldUpdate();
                 editDialogController.setGap(new Gap());
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
+                textFieldUpdate();
+                tableGap.refresh();
                 break;
             case "tAdd":
-                textFieldUpdate ();
+                textFieldUpdate();
                 editDialogController.setGap(new Gap());
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
+                textFieldUpdate();
+                tableGap.refresh();
                 break;
 
             case "btnEdit":
@@ -173,6 +175,8 @@ public class Controller extends Observable implements Initializable {
                 }
                 editDialogController.setGap(selectedGap);
                 showDialog();
+                textFieldUpdate();
+                tableGap.refresh();
                 break;
             case "tEdit":
                 if (!gapIsSelected(selectedGap)) {
@@ -180,6 +184,8 @@ public class Controller extends Observable implements Initializable {
                 }
                 editDialogController.setGap(selectedGap);
                 showDialog();
+                textFieldUpdate();
+                tableGap.refresh();
                 break;
 
             case "btnDelete":
@@ -187,12 +193,16 @@ public class Controller extends Observable implements Initializable {
                     return;
                 }
                 gapTableImpl.delete(selectedGap);
+                textFieldUpdate();
+                tableGap.refresh();
                 break;
             case "tDelete":
                 if (!gapIsSelected(selectedGap)) {
                     return;
                 }
                 gapTableImpl.delete(selectedGap);
+                textFieldUpdate();
+                tableGap.refresh();
                 break;
         }
 
@@ -225,13 +235,14 @@ public class Controller extends Observable implements Initializable {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void textFieldUpdate () {
+    public void textFieldUpdate() {
         try {
             updateCoordinateVP();
         } catch (NumberFormatException e) {
             dm.alert();
             return;
         }
+        tableGap.refresh();
         gapTableImpl.CalculatePowDdDb();
         x_cgr.setText(calc.calculateXcgr().replace(".", ","));
         y_cgr.setText(calc.calculateYcgr().replace(".", ","));
@@ -241,13 +252,16 @@ public class Controller extends Observable implements Initializable {
         _vb.setText(calc.calculateVb().replace(".", ","));
     }
 
-
-
-
-
     public void onClick_OK(ActionEvent actionEvent) {
-        textFieldUpdate ();
+        textFieldUpdate();
+        updateTable();
     }
+
+
+    public void updateTable() {
+        tableGap.refresh();
+    }
+
     public void updateCoordinateVP() {
         Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
         Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
@@ -323,7 +337,7 @@ public class Controller extends Observable implements Initializable {
         gapTableImpl.print();
         System.out.println();
         System.out.println("Центр групи розривів: \nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
-        System.out.println("Відстань від вогневої позиції: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
+        System.out.println("Середня лінія стрільби: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
         System.out.println();
         System.out.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
     }

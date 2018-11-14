@@ -44,7 +44,6 @@ public class CollectionGapTable implements GapTableInterface {
                 x = Double.parseDouble(gap.getX());
                 y = Double.parseDouble(gap.getY());
             } else {
-                //System.out.println(nam);
                 x = x + Double.parseDouble(gap.getX());
                 y = y + Double.parseDouble(gap.getY());
             }
@@ -56,7 +55,6 @@ public class CollectionGapTable implements GapTableInterface {
         int n = 0;
 
         for (Gap gap : gapList) {
-            //System.out.println("ffffff=   " + Double.parseDouble(gap.getDD().replace(",", ".")));
             n++;
             if (n == 1) {
                 pow_dD = Math.pow(Double.parseDouble(gap.getDD().replace(",", ".")), 2);

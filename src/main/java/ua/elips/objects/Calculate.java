@@ -76,13 +76,12 @@ public class Calculate {
     }
 
     public String calculateDd() {
-
-        dD = Math.cos(aGap - aCgr)  * dGap - dCgr;
+        dD = Math.cos((aGap - aCgr) / 9.5492) * dGap - dCgr;
         return Double.toString(Math.rint(dD * 100) / 100).replace(".", ",");
     }
 
     public String calculateDb() {
-        dB = Math.sin(aGap - aCgr) / 9.5492 * dGap;
+        dB = Math.sin((aGap - aCgr) / 9.5492) * dGap;
         return Double.toString(Math.rint(dB * 100) / 100).replace(".", ",");
     }
 
@@ -92,16 +91,16 @@ public class Calculate {
     }
 
     public String calculateVd() {
-        if (count>1)
-            vd = Math.rint(0.6745 * Math.sqrt(pow_dD / (count - 1))*100)/100;
+        if (count > 1)
+            vd = Math.rint(0.6745 * Math.sqrt(pow_dD / (count - 1)) * 100) / 100;
         else vd = 0;
-            return Double.toString(vd).replace(".", ",");
+        return Double.toString(vd).replace(".", ",");
     }
 
     public String calculateVb() {
-        if (count>1)
-            vb = Math.rint(0.6745 * Math.sqrt(pow_dB / (count - 1))*100)/100;
+        if (count > 1)
+            vb = Math.rint(0.6745 * Math.sqrt(pow_dB / (count - 1)) * 100) / 100;
         else vb = 0;
-            return Double.toString(vb).replace(".", ",");
-           }
+        return Double.toString(vb).replace(".", ",");
+    }
 }
