@@ -76,12 +76,13 @@ public class Calculate {
     }
 
     public String calculateDd() {
-        dD = Math.cos(aGap - aCgr) * dGap - dCgr;
+
+        dD = Math.cos(aGap - aCgr)  * dGap - dCgr;
         return Double.toString(Math.rint(dD * 100) / 100).replace(".", ",");
     }
 
     public String calculateDb() {
-        dB = Math.sin(aGap - aCgr) * dGap;
+        dB = Math.sin(aGap - aCgr) / 9.5492 * dGap;
         return Double.toString(Math.rint(dB * 100) / 100).replace(".", ",");
     }
 

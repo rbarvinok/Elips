@@ -155,13 +155,13 @@ public class Controller extends Observable implements Initializable {
 
         switch (clickedButton.getId()) {
             case "btnAdd":
-                updateCoordinateVP();
+                textFieldUpdate ();
                 editDialogController.setGap(new Gap());
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
                 break;
             case "tAdd":
-                updateCoordinateVP();
+                textFieldUpdate ();
                 editDialogController.setGap(new Gap());
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
@@ -225,7 +225,7 @@ public class Controller extends Observable implements Initializable {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void onClick_OK(ActionEvent actionEvent) {
+    public void textFieldUpdate () {
         try {
             updateCoordinateVP();
         } catch (NumberFormatException e) {
@@ -241,6 +241,13 @@ public class Controller extends Observable implements Initializable {
         _vb.setText(calc.calculateVb().replace(".", ","));
     }
 
+
+
+
+
+    public void onClick_OK(ActionEvent actionEvent) {
+        textFieldUpdate ();
+    }
     public void updateCoordinateVP() {
         Double xVp = Double.parseDouble(x_Vp.getText().replace(",", "."));
         Double yVp = Double.parseDouble(y_Vp.getText().replace(",", "."));
