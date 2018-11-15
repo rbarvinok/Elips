@@ -158,7 +158,7 @@ public class Controller extends Observable implements Initializable {
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
                 textFieldUpdate();
-                tableGap.refresh();
+                updateTable();
                 break;
             case "tAdd":
                 textFieldUpdate();
@@ -166,17 +166,16 @@ public class Controller extends Observable implements Initializable {
                 showDialog();
                 gapTableImpl.add(editDialogController.getGap());
                 textFieldUpdate();
-                tableGap.refresh();
                 break;
 
             case "btnEdit":
+                textFieldUpdate();
                 if (!gapIsSelected(selectedGap)) {
                     return;
                 }
                 editDialogController.setGap(selectedGap);
                 showDialog();
                 textFieldUpdate();
-                tableGap.refresh();
                 break;
             case "tEdit":
                 if (!gapIsSelected(selectedGap)) {
@@ -185,7 +184,6 @@ public class Controller extends Observable implements Initializable {
                 editDialogController.setGap(selectedGap);
                 showDialog();
                 textFieldUpdate();
-                tableGap.refresh();
                 break;
 
             case "btnDelete":
@@ -194,7 +192,7 @@ public class Controller extends Observable implements Initializable {
                 }
                 gapTableImpl.delete(selectedGap);
                 textFieldUpdate();
-                tableGap.refresh();
+
                 break;
             case "tDelete":
                 if (!gapIsSelected(selectedGap)) {
@@ -202,7 +200,6 @@ public class Controller extends Observable implements Initializable {
                 }
                 gapTableImpl.delete(selectedGap);
                 textFieldUpdate();
-                tableGap.refresh();
                 break;
         }
 
@@ -242,7 +239,7 @@ public class Controller extends Observable implements Initializable {
             dm.alert();
             return;
         }
-        tableGap.refresh();
+        updateTable();
         gapTableImpl.CalculatePowDdDb();
         x_cgr.setText(calc.calculateXcgr().replace(".", ","));
         y_cgr.setText(calc.calculateYcgr().replace(".", ","));
@@ -250,6 +247,7 @@ public class Controller extends Observable implements Initializable {
         d_cgr.setText(calc.calculateDcgr().replace(".", ","));
         _vd.setText(calc.calculateVd().replace(".", ","));
         _vb.setText(calc.calculateVb().replace(".", ","));
+        updateTable();
     }
 
     public void onClick_OK(ActionEvent actionEvent) {
@@ -257,9 +255,10 @@ public class Controller extends Observable implements Initializable {
         updateTable();
     }
 
-
     public void updateTable() {
         tableGap.refresh();
+        _vd.setText(calc.calculateVd().replace(".", ","));
+        _vb.setText(calc.calculateVb().replace(".", ","));
     }
 
     public void updateCoordinateVP() {
