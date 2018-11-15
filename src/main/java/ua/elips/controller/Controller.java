@@ -239,7 +239,6 @@ public class Controller extends Observable implements Initializable {
             dm.alert();
             return;
         }
-        updateTable();
         gapTableImpl.CalculatePowDdDb();
         x_cgr.setText(calc.calculateXcgr().replace(".", ","));
         y_cgr.setText(calc.calculateYcgr().replace(".", ","));
