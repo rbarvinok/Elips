@@ -19,7 +19,7 @@ import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
@@ -256,8 +256,10 @@ public class Controller extends Observable implements Initializable {
 
     public void updateTable() {
         tableGap.refresh();
-        _vd.setText(calc.calculateVd().replace(".", ","));
-        _vb.setText(calc.calculateVb().replace(".", ","));
+//        _vd.setText(calc.calculateVd().replace(".", ","));
+//        _vb.setText(calc.calculateVb().replace(".", ","));
+        tableGap.getColumns().get(5).setVisible(false);
+        tableGap.getColumns().get(5).setVisible(true);
     }
 
     public void updateCoordinateVP() {
@@ -328,15 +330,41 @@ public class Controller extends Observable implements Initializable {
         gapTableImpl.gapList.clear();
     }
 
-    public void OnClickSave(ActionEvent actionEvent) {
+    public void OnClickSave(ActionEvent actionEvent) throws IOException {
+        saveFromFile();
         System.out.println();
         System.out.println("Координати вогневої позиції: \n X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp +
-                "\nКількість пострілів - " + count + "\n\nКоординати розривіів:");
+                "\nКількість пострілів - " + count + "\nКоординати розривіів:");
         gapTableImpl.print();
         System.out.println();
         System.out.println("Центр групи розривів: \nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
         System.out.println("Середня лінія стрільби: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
         System.out.println();
         System.out.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
+    }
+
+    private void saveFromFile() throws IOException {
+        File outFile = new File("out.txt");
+        try {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(outFile)))) {
+                writer.println("Координати вогневої позиції: \n" +
+                        " X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp +
+                        "\nКількість пострілів - " + count + "\n\nКоординати розривіів:");
+                int i = 0;
+                for (Gap gap : gapTableImpl.getGapList()) {
+                    i++;
+                    writer.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
+                }
+                writer.println();
+                writer.println("Центр групи розривів: \n\nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
+                writer.println("Середня лінія стрільби: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
+                writer.println();
+                writer.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
+                writer.flush();
+                writer.close();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

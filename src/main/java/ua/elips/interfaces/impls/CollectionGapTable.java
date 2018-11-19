@@ -6,6 +6,13 @@ import ua.elips.interfaces.GapTableInterface;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.Gap;
 
+import java.io.*;
+import java.nio.Buffer;
+
+import static ua.elips.objects.Calculate.vb;
+import static ua.elips.objects.Calculate.vd;
+import static ua.elips.objects.Calculate.yVp;
+
 // класс реализовывает интерфейс с помощью коллекции
 public class CollectionGapTable implements GapTableInterface {
 
@@ -37,7 +44,6 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void CoordCgr() {
         int nam = 0;
-
         for (Gap gap : gapList) {
             nam++;
             if (nam == 1) {
@@ -74,7 +80,6 @@ public class CollectionGapTable implements GapTableInterface {
         for (Gap gap : gapList) {
             i++;
             System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
-
         }
     }
 
