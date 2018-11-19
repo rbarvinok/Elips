@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -344,27 +345,35 @@ public class Controller extends Observable implements Initializable {
     }
 
     private void saveFromFile() throws IOException {
-        File outFile = new File("out.txt");
-        try {
-            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(outFile)))) {
-                writer.println("Координати вогневої позиції: \n" +
-                        " X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp +
-                        "\nКількість пострілів - " + count + "\n\nКоординати розривіів:");
-                int i = 0;
-                for (Gap gap : gapTableImpl.getGapList()) {
-                    i++;
-                    writer.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Еліпс. Збереження файлу");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter(".txt", "*.txt"),
+                new FileChooser.ExtensionFilter("*.doc", "*.doc"));
+        File outFile = fileChooser.showSaveDialog(new Stage());
+        if (outFile != null) {
+            try {
+                try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(outFile)))) {
+                    writer.println("Координати вогневої позиції: \n" +
+                            " X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp +
+                            "\nКількість пострілів - " + count + "\n\nКоординати розривіів:");
+                    int i = 0;
+                    for (Gap gap : gapTableImpl.getGapList()) {
+                        i++;
+                        writer.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
+                    }
+                    writer.println();
+                    writer.println("Центр групи розривів: \n\nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
+                    writer.println("Середня лінія стрільби: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
+                    writer.println();
+                    writer.println("Відхилення: \n Вд = " + vd + " \n Вб = " + vb);
+                    writer.flush();
+                    writer.close();
                 }
-                writer.println();
-                writer.println("Центр групи розривів: \n\nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
-                writer.println("Середня лінія стрільби: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
-                writer.println();
-                writer.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
-                writer.flush();
-                writer.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
     }
 }
