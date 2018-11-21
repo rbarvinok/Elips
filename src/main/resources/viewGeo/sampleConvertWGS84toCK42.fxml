@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.geoProblem.controllerGeo.ControllerConvertWGS84toCK42">
+    <columnConstraints>
+        <ColumnConstraints minWidth="-Infinity" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <AnchorPane focusTraversable="true" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="434.0" prefWidth="673.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="180.0" prefHeight="21.0" prefWidth="456.0" text="СК-42 (Проєкція Гауса-Крюгера)" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+                <Label layoutX="36.0" layoutY="233.0" text="X" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="233.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+                <TextField fx:id="Tx" editable="false" layoutX="61.0" layoutY="226.0" prefHeight="25.0" prefWidth="279.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="226.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+                <Label layoutX="360.0" layoutY="233.0" text="Y" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="233.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+                <Label alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="21.0" prefWidth="475.0" text="WGS-84" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+                <Label layoutX="14.0" layoutY="77.0" text="B" AnchorPane.leftAnchor="14.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+                <Label layoutX="334.0" layoutY="77.0" text="L" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="77.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+                <Label layoutX="71.0" layoutY="123.0" prefHeight="27.0" prefWidth="76.0" text="Висота, м" AnchorPane.leftAnchor="71.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Button fx:id="btnok" defaultButton="true" layoutX="253.0" layoutY="327.0" mnemonicParsing="false" onAction="#onClick_btnOk" prefHeight="25.0" prefWidth="161.0" text="Розрахувати" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="259.0" />
+            <Button fx:id="btnx1" layoutX="624.0" layoutY="71.0" mnemonicParsing="false" onAction="#onClick_btnx1" styleClass="button1" stylesheets="@../styles/day.css" wrapText="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="71.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <TextField fx:id="ThCK42" editable="false" layoutX="147.0" layoutY="269.0" prefHeight="25.0" prefWidth="194.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="332.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Separator layoutX="7.0" layoutY="167.0" prefHeight="4.0" prefWidth="465.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="8.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="8.0" prefHeight="21.0" prefWidth="475.0" text="Конвертування координат" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="back" layoutX="82.0" layoutY="378.0" mnemonicParsing="false" onAction="#onClick_back" prefHeight="25.0" prefWidth="161.0" text="Назад" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="430.0" />
+            <Button fx:id="dov" layoutX="429.0" layoutY="378.0" mnemonicParsing="false" onAction="#onClick_dov" prefHeight="25.0" prefWidth="161.0" text="Довідка" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="83.0" />
+            <TextField fx:id="Txd" layoutX="39.0" layoutY="73.0" prefHeight="25.0" prefWidth="53.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="99.0" layoutY="67.0" text="o">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Txm" layoutX="111.0" layoutY="73.0" prefHeight="25.0" prefWidth="75.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="194.0" layoutY="67.0" text="'">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Txs" layoutX="203.0" layoutY="73.0" prefHeight="25.0" prefWidth="75.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="285.0" layoutY="70.0" text="&quot;">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Tyd" layoutX="359.0" layoutY="76.0" prefHeight="25.0" prefWidth="53.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="419.0" layoutY="70.0" text="o">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Tym" layoutX="431.0" layoutY="76.0" prefHeight="25.0" prefWidth="75.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="514.0" layoutY="70.0" text="'">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Tys" layoutX="523.0" layoutY="76.0" prefHeight="25.0" prefWidth="75.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="605.0" layoutY="70.0" text="&quot;">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Ty" editable="false" layoutX="381.0" layoutY="229.0" prefHeight="25.0" prefWidth="250.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="71.0" layoutY="269.0" prefHeight="27.0" prefWidth="76.0" text="Висота, м">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ThWGS84" layoutX="153.0" layoutY="121.0" prefHeight="25.0" prefWidth="377.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <TextField fx:id="Tn" editable="false" layoutX="523.0" layoutY="269.0" prefHeight="25.0" prefWidth="108.0">
+               <font>
+                  <Font size="10.0" />
+               </font></TextField>
+            <Label layoutX="431.0" layoutY="276.0" prefHeight="17.0" prefWidth="75.0" text="Номер зони">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            </children>
+            <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+        </AnchorPane>
+    </children>
+</GridPane>

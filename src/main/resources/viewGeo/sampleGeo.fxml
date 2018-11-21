@@ -23,7 +23,7 @@
     <children>
         <AnchorPane focusTraversable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="453.0">
             <children>
-                <TextArea id="TextArea1" fx:id="ta" accessibleRole="PAGE_ITEM" editable="false" layoutX="10.0" layoutY="213.0" prefHeight="170.0" prefWidth="433.0" text="ПРЯМА ГЕОДЕЗИЧНА ЗАДАЧА заключається в тому, що по відомим координатам однієї точки розраховується координати другої точки, для чого необхідно знати довжину лінії між цими точками та дирекційний кут цієї лініїОБЕРНЕНА ГЕОДЕЗИЧНА ЗАДАЧА заключається в тому, що по відомим координатам двох точок розраховується довжина лінії між цими точками та дирекційний кут цієї лінії" wrapText="true" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                <TextArea id="TextArea1" fx:id="ta" accessibleRole="PAGE_ITEM" editable="false" layoutX="10.0" layoutY="213.0" prefHeight="170.0" prefWidth="433.0" text="ПРЯМА ГЕОДЕЗИЧНА ЗАДАЧА заключається в тому, що по відомим координатам однієї точки розраховується координати другої точки, для чого необхідно знати довжину лінії між цими точками та дирекційний кут цієї лінії.                 ОБЕРНЕНА ГЕОДЕЗИЧНА ЗАДАЧА заключається в тому, що по відомим координатам двох точок розраховується довжина лінії між цими точками та дирекційний кут цієї лінії" wrapText="true" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                     <effect>
                         <DropShadow />
                     </effect>
@@ -77,7 +77,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="453.0">
                            <children>
-                              <Button fx:id="btnCKtoWGS" layoutX="72.0" layoutY="21.0" mnemonicParsing="false" onAction="#onClick_btnCKtoWGS" prefHeight="40.0" prefWidth="317.0" text="СК-42 в WGS-84" underline="true" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="22.0">
+                              <Button fx:id="btnCKtoWGS" defaultButton="true" layoutX="72.0" layoutY="21.0" mnemonicParsing="false" onAction="#onClick_btnCKtoWGS" prefHeight="40.0" prefWidth="317.0" text="СК-42 в WGS-84" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="22.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -96,7 +96,7 @@
                   </Tab>
                     </tabs>
                 </TabPane>
-            <Button cancelButton="true" layoutX="362.0" layoutY="370.0" mnemonicParsing="false" onAction="#OnClickExit" prefHeight="25.0" prefWidth="79.0" text="Вийти" />
+            <Button fx:id="back" cancelButton="true" layoutX="362.0" layoutY="370.0" mnemonicParsing="false" onAction="#OnClickExit" prefHeight="25.0" prefWidth="79.0" text="Вийти" />
             </children>
             <GridPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

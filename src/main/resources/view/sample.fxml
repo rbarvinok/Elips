@@ -55,14 +55,14 @@
                     <items>
                       <MenuItem fx:id="mPgzCK42" mnemonicParsing="false" onAction="#onClick_menuPGZ" text="Пряма задача" />
                         <MenuItem fx:id="mOgzCK42" mnemonicParsing="false" onAction="#onClick_menuOGZ" text="Обернена задача" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="Конвертор в WGS-84" />
+                        <MenuItem disable="true" mnemonicParsing="false" onAction="#onClick_menuCKtoWGS" text="Конвертор в WGS-84" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="WGS-84">
                     <items>
                       <MenuItem fx:id="mPgzWGS" mnemonicParsing="false" onAction="#onClick_menuPGZ84" text="Пряма задача" />
                       <MenuItem fx:id="mOgzWGS" mnemonicParsing="false" onAction="#onClick_menuOGZ84" text="Обернена задача" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="Конвертор в СК-42" />
+                        <MenuItem disable="true" mnemonicParsing="false" onAction="#onClick_menuWGStoCK" text="Конвертор в СК-42" />
                     </items>
                   </Menu>
               </items>
@@ -83,7 +83,7 @@
             </Label>
             <ToolBar layoutX="1.0" prefHeight="25.0" prefWidth="709.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                <items>
-                  <Button fx:id="tNew" lineSpacing="1.0" mnemonicParsing="false" onAction="#OnClickNew" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css">
+                  <Button fx:id="tNew" lineSpacing="1.0" mnemonicParsing="false" onAction="#OnClickNew" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -93,7 +93,7 @@
                      <tooltip>
                         <Tooltip text="Новий бланк" />
                      </tooltip></Button>
-                  <Button id="b" mnemonicParsing="false" onAction="#onClickOpenFile" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css">
+                  <Button id="b" mnemonicParsing="false" onAction="#onClickOpenFile" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -105,7 +105,7 @@
                         <Tooltip text="Відкрити файл" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tSave" mnemonicParsing="false" onAction="#OnClickSave" styleClass="button1" stylesheets="@../styles/day.css">
+                  <Button fx:id="tSave" mnemonicParsing="false" onAction="#OnClickSave" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -123,7 +123,7 @@
                         <Font size="10.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tAdd" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                        <ImageView  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
                            <image>
                               <Image url="@../images/plus.png" />
                            </image>
@@ -157,7 +157,7 @@
                         <Tooltip opacity="0.8" text="Редагувати" textAlignment="CENTER" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tDelete" minHeight="23.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="0.0" prefWidth="32.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#e40606">
+                  <Button fx:id="tDelete" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#e40606">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -188,7 +188,7 @@
                         <Tooltip text="Геодезичні задачі" />
                      </tooltip>
                   </Button>
-                  <Button minHeight="30.0" mnemonicParsing="false" onAction="#onClickChartsButton" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css">
+                  <Button mnemonicParsing="false" onAction="#onClickChartsButton" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

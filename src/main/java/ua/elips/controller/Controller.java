@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sun.security.action.OpenFileInputStreamAction;
 import ua.elips.geoProblem.controllerGeo.ControllerGeo;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
@@ -311,6 +312,13 @@ public class Controller extends Observable implements Initializable {
         controllerGeo.WGS84PGZ();
     }
 
+    public void onClick_menuCKtoWGS(ActionEvent actionEvent) throws IOException {
+        controllerGeo.konvertCK42toWGS84();
+    }
+
+    public void onClick_menuWGStoCK(ActionEvent actionEvent) throws IOException {
+        controllerGeo.konvertWGS84toCK42();
+    }
     public void OnClickNew(ActionEvent actionEvent) {
         clear(x_Vp, y_Vp, h_Vp);
         gapTableImpl.gapList.clear();
@@ -363,14 +371,24 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void onClickOpenFile(ActionEvent actionEvent) {
+        String s;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Еліпс. Відкриття файлу");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("*.*", "*.*"),
                 new FileChooser.ExtensionFilter(".txt", "*.txt"),
                 new FileChooser.ExtensionFilter("*.doc", "*.doc"));
-        File outFile = fileChooser.showOpenDialog(new Stage());
-        if (outFile != null) {
+        File openFile = fileChooser.showOpenDialog(new Stage());
+        if (openFile != null) {
+            //s = "notepad"+fileChooser.getTitle()+"txt";
+            //openFile.getAbsoluteFile();
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("notepad" );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
     }

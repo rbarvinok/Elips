@@ -10,23 +10,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import ua.elips.objects.DialogManeger;
-
-
 import java.io.IOException;
 
 public class ControllerGeo {
 
-    private DialogManeger dm = new DialogManeger();
-
     @FXML
     public TextArea ta;
     @FXML
-    public Button btno, btnp, btno84, btnp84, btnCKtoWGS, btnWGStoCK;
+    public Button btno, btnp, btno84, btnp84, btnCKtoWGS, btnWGStoCK, back;
 
     public void ck42PGZ() throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzCK42.fxml"));
+        Stage stage = (Stage) btnp.getScene().getWindow();
+        stage.close();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzCK42.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         //stage = new Stage();
         stage.setTitle("Пряма геодезична задача");
@@ -37,7 +33,8 @@ public class ControllerGeo {
     }
 
     public void ck42OGZ() throws IOException {
-        Stage stage = new Stage();
+        Stage stage = (Stage) btno.getScene().getWindow();
+        stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleOgzCK42.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
         //stage = new Stage();
@@ -48,7 +45,8 @@ public class ControllerGeo {
     }
 
     public void WGS84PGZ() throws IOException {
-        Stage stage = new Stage();
+        Stage stage = (Stage) btnp84.getScene().getWindow();
+        stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzWGS84.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
         //stage = new Stage();
@@ -59,13 +57,38 @@ public class ControllerGeo {
     }
 
     public void WGS84OGZ() throws IOException {
-        Stage stage = new Stage();
+        Stage stage = (Stage) btno84.getScene().getWindow();
+        stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleOgzWGS84.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
         //stage = new Stage();
         stage.setTitle("Обернена геодезична задача");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
         stage.setScene(new Scene(root2));
+        stage.show();
+    }
+
+    public void konvertCK42toWGS84() throws IOException {
+        Stage stage = (Stage) btnCKtoWGS.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleConvertCK42toWGS84.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        //stage = new Stage();
+        stage.setTitle("Конвертор координат");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(root2));
+        stage.show();
+    }
+
+    public void konvertWGS84toCK42() throws IOException {
+        Stage stage = (Stage) btnWGStoCK.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleConvertWGS84toCK42.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        //stage = new Stage();
+        stage.setTitle("Конвертор координат");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
@@ -86,38 +109,18 @@ public class ControllerGeo {
     }
 
     public void onClick_btnCKtoWGS(ActionEvent actionEvent) throws IOException {
-        //Закрытие окна
-        Stage stage = (Stage) btnCKtoWGS.getScene().getWindow();
-        stage.hide();
-        //  Открытие нового окна
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/sampleConvertCK42toWGS84.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        stage = new Stage();
-        stage.setTitle("Перетворення координат СК-42 в WGS-84");
-        stage.getIcons().add(new Image(getClass().getResource("/images/america_ico.png").toExternalForm()));
-        stage.setScene(new Scene(root));
-
-        stage.show();
+        konvertCK42toWGS84();
     }
 
     public void onClick_WGStoCK(ActionEvent actionEvent) throws IOException {
-//Закрытие окна
-        Stage stage = (Stage) btnWGStoCK.getScene().getWindow();
-        stage.hide();
-        //  Открытие нового окна
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/sampleConvertWGS84toCK42.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        stage = new Stage();
-        stage.setTitle("Перетворення координат WGS-84 в СК-42");
-        stage.getIcons().add(new Image(getClass().getResource("/images/america_ico.png").toExternalForm()));
-        stage.setScene(new Scene(root));
-        stage.show();
+        konvertWGS84toCK42();
     }
 
-    public void OnClickExit(ActionEvent actionEvent) {
+    public void OnClickExit(ActionEvent actionEvent) throws IOException {
+
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
-        stage.hide();
+        stage.close();
     }
 
 }
