@@ -363,6 +363,16 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void onClickOpenFile(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Еліпс. Відкриття файлу");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter(".txt", "*.txt"),
+                new FileChooser.ExtensionFilter("*.doc", "*.doc"));
+        File outFile = fileChooser.showOpenDialog(new Stage());
+        if (outFile != null) {
+
+        }
     }
 
     public void onClickChartsButton(ActionEvent actionEvent) {
