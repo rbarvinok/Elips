@@ -93,6 +93,18 @@
                      <tooltip>
                         <Tooltip text="Новий бланк" />
                      </tooltip></Button>
+                  <Button id="b" mnemonicParsing="false" onAction="#onClickOpenFile" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/open.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Відкрити файл" />
+                     </tooltip>
+                  </Button>
                   <Button fx:id="tSave" mnemonicParsing="false" onAction="#OnClickSave" styleClass="button1" stylesheets="@../styles/day.css">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
@@ -102,18 +114,18 @@
                         </ImageView>
                      </graphic>
                      <tooltip>
-                        <Tooltip text="Зберегти" />
+                        <Tooltip text="Зберегти в файл" />
                      </tooltip>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0" />
-                  <Button fx:id="tAdd" lineSpacing="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#07e31e" wrapText="true">
+                  <Button fx:id="tAdd" lineSpacing="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#07e31e" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tAdd" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" smooth="false">
+                        <ImageView fx:id="tAdd" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
                            <image>
-                              <Image url="@../images/+2.png" />
+                              <Image url="@../images/plus.png" />
                            </image>
                            <effect>
                               <DropShadow />
@@ -127,11 +139,11 @@
                         <Tooltip opacity="0.8" text="Додати постріл" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                      </tooltip>
                   </Button>
-                  <Button fx:id="tEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#2b07e3">
+                  <Button fx:id="tEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css" textFill="#2b07e3">
                      <graphic>
-                        <ImageView fx:id="tEdit" fitHeight="17.0" fitWidth="17.0" onDragDetected="#actionButtonPressed" pickOnBounds="true">
+                        <ImageView fx:id="tEdit" fitHeight="20.0" fitWidth="20.0" onDragDetected="#actionButtonPressed" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/edit1.png" />
+                              <Image url="@../images/font%20background.png" />
                            </image>
                            <effect>
                               <DropShadow />
@@ -150,9 +162,9 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="tDelete" fitHeight="17.0" fitWidth="17.0" onDragDetected="#actionButtonPressed" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tDelete" fitHeight="20.0" fitWidth="20.0" onDragDetected="#actionButtonPressed" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/-.png" />
+                              <Image url="@../images/delete.png" />
                            </image>
                            <effect>
                               <DropShadow />
@@ -164,6 +176,42 @@
                      </tooltip>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+                  <Button mnemonicParsing="false" onAction="#onClickGeoButton" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/globe.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Геодезичні задачі" />
+                     </tooltip>
+                  </Button>
+                  <Button minHeight="30.0" mnemonicParsing="false" onAction="#onClickChartsButton" prefWidth="30.0" styleClass="button1" stylesheets="@../styles/day.css">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/diagram.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Графічне відображення" />
+                     </tooltip></Button>
+                  <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="6.0" />
+                  <Button mnemonicParsing="false" onAction="#onClick_menuExit" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/exit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Зактити програму" />
+                     </tooltip>
+                  </Button>
                </items>
             </ToolBar>
             <HBox fillHeight="false" layoutX="5.0" layoutY="56.0" prefHeight="20.0" prefWidth="703.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="56.0">

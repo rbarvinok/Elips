@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ua.elips.geoProblem.controllerGeo.ControllerGeo;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
@@ -33,6 +34,7 @@ public class Controller extends Observable implements Initializable {
     private CollectionGapTable gapTableImpl = new CollectionGapTable();
     private DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
+    private ControllerGeo controllerGeo = new ControllerGeo();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
@@ -282,48 +284,31 @@ public class Controller extends Observable implements Initializable {
         stage.show();
     }
 
-    public void onClick_menuPGZ(ActionEvent actionEvent) throws IOException {
+    public void onClickGeoButton(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzCK42.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleGeo.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
         //stage = new Stage();
-        stage.setTitle("Пряма геодезична задача");
+        stage.setTitle("Геодезичні задачі");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public void onClick_menuPGZ(ActionEvent actionEvent) throws IOException {
+        controllerGeo.ck42PGZ();
     }
 
     public void onClick_menuOGZ(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleOgzCK42.fxml"));
-        Parent root2 = (Parent) fxmlLoader.load();
-        //stage = new Stage();
-        stage.setTitle("Обернена геодезична задача");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        stage.setScene(new Scene(root2));
-        stage.show();
+        controllerGeo.ck42OGZ();
     }
 
     public void onClick_menuOGZ84(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleOgzWGS84.fxml"));
-        Parent root2 = (Parent) fxmlLoader.load();
-        //stage = new Stage();
-        stage.setTitle("Обернена геодезична задача");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        stage.setScene(new Scene(root2));
-        stage.show();
+        controllerGeo.WGS84OGZ();
     }
 
     public void onClick_menuPGZ84(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/samplePgzWGS84.fxml"));
-        Parent root2 = (Parent) fxmlLoader.load();
-        //stage = new Stage();
-        stage.setTitle("Пряма геодезична задача");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        stage.setScene(new Scene(root2));
-        stage.show();
+        controllerGeo.WGS84PGZ();
     }
 
     public void OnClickNew(ActionEvent actionEvent) {
@@ -375,5 +360,11 @@ public class Controller extends Observable implements Initializable {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public void onClickOpenFile(ActionEvent actionEvent) {
+    }
+
+    public void onClickChartsButton(ActionEvent actionEvent) {
     }
 }
