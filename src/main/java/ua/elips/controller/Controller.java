@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BubbleChart;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -400,11 +401,12 @@ public class Controller extends Observable implements Initializable {
         Stage stage = new Stage();
         //stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/chart.fxml"));
-        Parent BubbleChart = (Parent) fxmlLoader.load();
+        //Parent root = (Parent) fxmlLoader.load();
+        Parent ScatterChart = (Parent) fxmlLoader.load();
         stage.setTitle("Графік розривів");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        //Scene scene = new Scene(chartController.bubbleChart, 600,600);
-        stage.setScene(new Scene(BubbleChart));
+        //stage.setScene(new Scene(root));
+        stage.setScene(new Scene(ScatterChart));
         stage.show();
     }
 }
