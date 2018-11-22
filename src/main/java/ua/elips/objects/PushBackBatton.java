@@ -12,15 +12,7 @@ public class PushBackBatton {
         //Закрытие окна
         Stage stage = (Stage) back.getScene().getWindow();
         stage.close();
-        //  Открытие нового окна
-      /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/sample/sample.fxml"));
-       Parent root1=(Parent) fxmlLoader.load();
-       stage = new Stage();
-       stage.setTitle("ОГЗ - ПГЗ");
-       stage.getIcons().add(new Image(getClass().getResource("/images/sample/znakukr.png").toExternalForm()));
-       stage.setScene(new Scene(root1));
-       root1.getStylesheets().add(getClass().getResource(change_css()).toExternalForm());
-       stage.show();*/
+
     }
 
 }

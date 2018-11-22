@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BubbleChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -36,6 +37,7 @@ public class Controller extends Observable implements Initializable {
     private DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
     private ControllerGeo controllerGeo = new ControllerGeo();
+    private ChartController chartController = new ChartController();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
@@ -319,6 +321,7 @@ public class Controller extends Observable implements Initializable {
     public void onClick_menuWGStoCK(ActionEvent actionEvent) throws IOException {
         controllerGeo.konvertWGS84toCK42();
     }
+
     public void OnClickNew(ActionEvent actionEvent) {
         clear(x_Vp, y_Vp, h_Vp);
         gapTableImpl.gapList.clear();
@@ -385,7 +388,7 @@ public class Controller extends Observable implements Initializable {
             //openFile.getAbsoluteFile();
             Runtime runtime = Runtime.getRuntime();
             try {
-                runtime.exec("notepad" );
+                runtime.exec("notepad");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -393,6 +396,15 @@ public class Controller extends Observable implements Initializable {
         }
     }
 
-    public void onClickChartsButton(ActionEvent actionEvent) {
+    public void onClickChartsButton(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        //stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/chart.fxml"));
+        Parent BubbleChart = (Parent) fxmlLoader.load();
+        stage.setTitle("Графік розривів");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        //Scene scene = new Scene(chartController.bubbleChart, 600,600);
+        stage.setScene(new Scene(BubbleChart));
+        stage.show();
     }
 }
