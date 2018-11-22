@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="471.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.controller.ChartController">
+<AnchorPane prefHeight="474.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.elips.controller.ChartController">
    <children>
-      <BubbleChart fx:id="bubbleChart" layoutX="20.0" layoutY="26.0" prefHeight="388.0" prefWidth="559.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+      <BubbleChart fx:id="bubbleChart" alternativeColumnFillVisible="true" layoutX="20.0" layoutY="26.0" prefHeight="388.0" prefWidth="552.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
         <xAxis>
           <NumberAxis side="BOTTOM" fx:id="xAx" />
         </xAxis>
@@ -17,11 +17,11 @@
           <NumberAxis fx:id="yAx" side="LEFT" />
         </yAxis>
       </BubbleChart>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="6.0" prefHeight="17.0" prefWidth="454.0" text="КООРДИНАТИ РОЗРИВІВ">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="6.0" prefHeight="17.0" prefWidth="454.0" text="КООРДИНАТИ РОЗРИВІВ" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="447.0" layoutY="426.0" mnemonicParsing="false" onAction="#OnClickBackButton" prefHeight="25.0" prefWidth="70.0" text="Назад" />
+      <Button fx:id="backBtn" layoutX="447.0" layoutY="426.0" mnemonicParsing="false" onAction="#OnClickBackButton" prefHeight="25.0" prefWidth="70.0" text="Назад" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
