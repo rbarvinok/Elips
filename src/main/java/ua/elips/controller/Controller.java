@@ -38,7 +38,6 @@ public class Controller extends Observable implements Initializable {
     private DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
     private ControllerGeo controllerGeo = new ControllerGeo();
-    private ChartController chartController = new ChartController();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
@@ -129,6 +128,7 @@ public class Controller extends Observable implements Initializable {
     public void updateCount() {
         count = gapTableImpl.getGapList().size();
         gapCount.setText(Integer.toString(count));
+
         calc.GetCount(count);
         gapTableImpl.CoordCgr();
     }
@@ -265,8 +265,8 @@ public class Controller extends Observable implements Initializable {
         tableGap.refresh();
 //        _vd.setText(calc.calculateVd().replace(".", ","));
 //        _vb.setText(calc.calculateVb().replace(".", ","));
-        tableGap.getColumns().get(5).setVisible(false);
-        tableGap.getColumns().get(5).setVisible(true);
+//        tableGap.getColumns().get(5).setVisible(false);
+//        tableGap.getColumns().get(5).setVisible(true);
     }
 
     public void updateCoordinateVP() {
@@ -402,11 +402,12 @@ public class Controller extends Observable implements Initializable {
         //stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/chart.fxml"));
         //Parent root = (Parent) fxmlLoader.load();
-        Parent ScatterChart = (Parent) fxmlLoader.load();
+        Parent BubbleChart = (Parent) fxmlLoader.load();
+        //Parent ScatterChart = (Parent) fxmlLoader.load();
         stage.setTitle("Графік розривів");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
         //stage.setScene(new Scene(root));
-        stage.setScene(new Scene(ScatterChart));
+        stage.setScene(new Scene(BubbleChart));
         stage.show();
     }
 }
