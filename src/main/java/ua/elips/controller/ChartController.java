@@ -57,7 +57,7 @@ public class ChartController implements Initializable {
             i++;
             System.out.println(getGapX());
             //datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX()), 1));
-            datas1.add(new XYChart.Data(getGapX(), gap.getX(), 1));
+            datas1.add(new XYChart.Data(getGapX(), getGapY(), 1));
 
         }
 
@@ -92,6 +92,11 @@ public class ChartController implements Initializable {
     public double getGapX() {
         gapTableImpl.getGapList();
         return Double.parseDouble(gap.getY());
+    }
+
+    public double getGapY() {
+        gapTableImpl.getGapList();
+        return Double.parseDouble(gap.getX());
     }
 
     public void OnClickBackButton(ActionEvent actionEvent) throws IOException {
