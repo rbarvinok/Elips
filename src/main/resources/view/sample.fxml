@@ -30,7 +30,7 @@
         <Menu mnemonicParsing="false" text="Файл">
           <items>
             <MenuItem fx:id="mNew" mnemonicParsing="false" onAction="#OnClickNew" text="Новий" />
-            <MenuItem disable="true" mnemonicParsing="false" text="Відкрити" />
+            <MenuItem mnemonicParsing="false" onAction="#onClickOpenFile" text="Відкрити" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="mSave" mnemonicParsing="false" onAction="#OnClickSave" text="Зберегти" />
             <SeparatorMenuItem mnemonicParsing="false" />
@@ -123,7 +123,7 @@
                         <Font size="10.0" />
                      </font>
                      <graphic>
-                        <ImageView  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
                            <image>
                               <Image url="@../images/plus.png" />
                            </image>
