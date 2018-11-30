@@ -17,10 +17,10 @@ public class OpenStage {
 
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(viewURL));
-        Parent root1 = (Parent) fxmlLoader.load();
+        Parent root = (Parent) fxmlLoader.load();
         stage.setTitle(title);
         stage.getIcons().add(new Image(getClass().getResourceAsStream(imageURL)));
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 

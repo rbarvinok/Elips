@@ -24,11 +24,13 @@ import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 import ua.elips.objects.OpenStage;
+
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
+
 import static ua.elips.objects.Calculate.*;
 import static ua.elips.objects.Clear.clear;
 
@@ -389,8 +391,12 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void onClickChartsButton(ActionEvent actionEvent) throws IOException {
-        os.viewURL = "/view/chart.fxml";
-        os.title = "Графік розривів";
-        os.openStage();
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/scchart.fxml"));
+        Parent ScatterChart = (Parent) fxmlLoader.load();
+        stage.setTitle("Графік розривів");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
+        stage.setScene(new Scene(ScatterChart));
+        stage.show();
     }
 }

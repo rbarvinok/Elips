@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.chart.BubbleChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
@@ -31,16 +28,16 @@ public class ChartController implements Initializable {
     @FXML
     public Button backBtn;
     @FXML
-    public BubbleChart bubbleChart;
+    public ScatterChart scatterChart;
     private Gap gap;
-    //public double xCgr, yCgr;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         NumberAxis x = new NumberAxis();
         NumberAxis y = new NumberAxis();
-        BubbleChart<Number, Number> blc = new BubbleChart<Number, Number>(x, y);
-        blc.setTitle("Розриви");
+        ScatterChart<Number, Number> scatterChar = new ScatterChart<Number, Number>(x, y);
+        scatterChar.setTitle("Розриви");
         x.setLabel("Y");
         y.setLabel("X");
 
@@ -55,7 +52,7 @@ public class ChartController implements Initializable {
         int i = 0;
         for (Gap gap : gapTableImpl.gapList) {
             i++;
-            System.out.println(getGapX());
+            //System.out.println(getGapX());
             datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX())));
             //datas1.add(new XYChart.Data(getGapX(), getGapY()));
         }
@@ -70,25 +67,24 @@ public class ChartController implements Initializable {
         ObservableList<XYChart.Data> datas2 = FXCollections.observableArrayList();
 
         datas2.add(new XYChart.Data(getYcgr(), getXcgr()));
-        //datas2.add(new XYChart.Data(i, Math.cos(i),0.1));
 
         series1.setData(datas1);
         series2.setData(datas2);
 
-        bubbleChart.getData().addAll(series1, series2);
+        scatterChart.getData().addAll(series1, series2);
     }
 
 
-    public double getGapX() {
-        gapTableImpl.getGapList();
-        return Double.parseDouble(gap.getY());
-    }
-
-    public double getGapY() {
-        gapTableImpl.getGapList();
-
-        return Double.parseDouble(gap.getX());
-    }
+//    public double getGapX() {
+//        gapTableImpl.getGapList();
+//        return Double.parseDouble(gap.getY());
+//    }
+//
+//    public double getGapY() {
+//        gapTableImpl.getGapList();
+//
+//        return Double.parseDouble(gap.getX());
+//    }
 
     public void OnClickBackButton(ActionEvent actionEvent) throws IOException {
         pb.back = backBtn;
