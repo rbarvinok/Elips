@@ -13,7 +13,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/sample.fxml"));
         primaryStage.getIcons().add(new Image(getClass().getResource("/images/znakukr.png").toExternalForm()));
-
         primaryStage.setTitle("Еліпс");
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(550);

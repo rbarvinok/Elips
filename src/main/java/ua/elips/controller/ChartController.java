@@ -25,8 +25,8 @@ import static ua.elips.objects.Calculate.yCgr;
 
 public class ChartController implements Initializable {
     PushBackBatton pb = new PushBackBatton();
-    CollectionGapTable gapTableImpl = new CollectionGapTable();
-    Calculate calc = new Calculate();
+    public CollectionGapTable gapTableImpl = new CollectionGapTable();
+    //Calculate calc = new Calculate();
 
     @FXML
     public Button backBtn;
@@ -53,21 +53,20 @@ public class ChartController implements Initializable {
         ObservableList<XYChart.Data> datas1 = FXCollections.observableArrayList();
 
         int i = 0;
-        for (Gap gap : gapTableImpl.getGapList()) {
+        for (Gap gap : gapTableImpl.gapList) {
             i++;
-            System.out.println(getGapX());
-            //datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX()), 1));
-            datas1.add(new XYChart.Data(getGapX(), getGapY(), 1));
-
+            //System.out.println(getGapX());
+            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX()), 2));
+            //datas1.add(new XYChart.Data(getGapX(), getGapY(), 1));
         }
 
 
-//        datas1.add(new XYChart.Data(10, 30, 1));
-//        datas1.add(new XYChart.Data(25, 15, 1));
-//        datas1.add(new XYChart.Data(40, 50, 1));
-//        datas1.add(new XYChart.Data(55, 60, 1));
-//        datas1.add(new XYChart.Data(70, 70, 1));
-//        datas1.add(new XYChart.Data(85, 80, 1));
+        datas1.add(new XYChart.Data(10, 30, 1));
+        datas1.add(new XYChart.Data(25, 15, 1));
+        datas1.add(new XYChart.Data(40, 50, 1));
+        datas1.add(new XYChart.Data(55, 60, 1));
+        datas1.add(new XYChart.Data(70, 70, 1));
+        datas1.add(new XYChart.Data(85, 80, 1));
 
 
         ObservableList<XYChart.Data> datas2 = FXCollections.observableArrayList();
@@ -81,13 +80,6 @@ public class ChartController implements Initializable {
         bubbleChart.getData().addAll(series1, series2);
     }
 
-    public double getXcgr() {
-        return xCgr;
-    }
-
-    public double getYcgr() {
-        return yCgr;
-    }
 
     public double getGapX() {
         gapTableImpl.getGapList();
@@ -96,6 +88,7 @@ public class ChartController implements Initializable {
 
     public double getGapY() {
         gapTableImpl.getGapList();
+
         return Double.parseDouble(gap.getX());
     }
 
@@ -103,4 +96,14 @@ public class ChartController implements Initializable {
         pb.back = backBtn;
         pb.backButton();
     }
+
+
+    public double getXcgr() {
+        return xCgr;
+    }
+
+    public double getYcgr() {
+        return yCgr;
+    }
+
 }

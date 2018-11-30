@@ -23,6 +23,7 @@ import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
+import ua.elips.objects.OpenStage;
 
 import java.io.*;
 import java.net.URL;
@@ -38,10 +39,12 @@ public class Controller extends Observable implements Initializable {
     private DialogManeger dm = new DialogManeger();
     private Calculate calc = new Calculate();
     private ControllerGeo controllerGeo = new ControllerGeo();
+    private OpenStage os = new OpenStage();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
     public static int count;
+    private String nameOpenFile;
 
     @FXML
     public TextField x_Vp, y_Vp, h_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
@@ -289,14 +292,9 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void onClickGeoButton(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewGeo/sampleGeo.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        //stage = new Stage();
-        stage.setTitle("Геодезичні задачі");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        stage.setScene(new Scene(root));
-        stage.show();
+        os.viewURL = "/viewGeo/sampleGeo.fxml";
+        os.title = "Геодезичні задачі";
+        os.openStage();
     }
 
     public void onClick_menuPGZ(ActionEvent actionEvent) throws IOException {
@@ -346,8 +344,8 @@ public class Controller extends Observable implements Initializable {
         fileChooser.setTitle("Еліпс. Збереження файлу");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter(".txt", "*.txt"),
-                new FileChooser.ExtensionFilter("*.doc", "*.doc"));
+                new FileChooser.ExtensionFilter("Текст", "*.txt"),
+                new FileChooser.ExtensionFilter("Microsoft Word", "*.doc"));
         File outFile = fileChooser.showSaveDialog(new Stage());
         if (outFile != null) {
             try {
@@ -369,13 +367,16 @@ public class Controller extends Observable implements Initializable {
                     writer.close();
                 }
             } catch (IOException ex) {
+                dm.hd = "Пустий файл";
+                dm.ct = "Неможливо зберегти пустий файл";
+                dm.alert();
                 ex.printStackTrace();
+
             }
         }
     }
 
     public void onClickOpenFile(ActionEvent actionEvent) {
-        String s;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Еліпс. Відкриття файлу");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -385,8 +386,9 @@ public class Controller extends Observable implements Initializable {
                 new FileChooser.ExtensionFilter("*.doc", "*.doc"));
         File openFile = fileChooser.showOpenDialog(new Stage());
         if (openFile != null) {
-            //s = "notepad"+fileChooser.getTitle()+"txt";
-            //openFile.getAbsoluteFile();
+            nameOpenFile = fileChooser.getTitle() + "txt";
+            openFile.getAbsoluteFile();
+
             Runtime runtime = Runtime.getRuntime();
             try {
                 runtime.exec("notepad");
@@ -398,16 +400,8 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void onClickChartsButton(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        //stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/chart.fxml"));
-        //Parent root = (Parent) fxmlLoader.load();
-        Parent BubbleChart = (Parent) fxmlLoader.load();
-        //Parent ScatterChart = (Parent) fxmlLoader.load();
-        stage.setTitle("Графік розривів");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        //stage.setScene(new Scene(root));
-        stage.setScene(new Scene(BubbleChart));
-        stage.show();
+        os.viewURL = "/view/chart.fxml";
+        os.title = "Графік розривів";
+        os.openStage();
     }
 }
