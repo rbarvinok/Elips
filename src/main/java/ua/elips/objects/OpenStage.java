@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class OpenStage {
     public String viewURL;
-    public String imageUR = "/images/znakukr.png";
+    public String imageURL = "/images/znakukr.png";
     public String title;
 
     public void openStage() throws IOException {
@@ -19,8 +19,12 @@ public class OpenStage {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(viewURL));
         Parent root1 = (Parent) fxmlLoader.load();
         stage.setTitle(title);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream(imageUR)));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(imageURL)));
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    public void closeStage(){
+        closeStage();
     }
 }

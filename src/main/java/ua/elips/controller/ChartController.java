@@ -40,7 +40,7 @@ public class ChartController implements Initializable {
         NumberAxis x = new NumberAxis();
         NumberAxis y = new NumberAxis();
         BubbleChart<Number, Number> blc = new BubbleChart<Number, Number>(x, y);
-        blc.setTitle("Series");
+        blc.setTitle("Розриви");
         x.setLabel("Y");
         y.setLabel("X");
 
@@ -55,23 +55,21 @@ public class ChartController implements Initializable {
         int i = 0;
         for (Gap gap : gapTableImpl.gapList) {
             i++;
-            //System.out.println(getGapX());
-            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX()), 2));
-            //datas1.add(new XYChart.Data(getGapX(), getGapY(), 1));
+            System.out.println(getGapX());
+            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX())));
+            //datas1.add(new XYChart.Data(getGapX(), getGapY()));
         }
 
-
-        datas1.add(new XYChart.Data(10, 30, 1));
-        datas1.add(new XYChart.Data(25, 15, 1));
-        datas1.add(new XYChart.Data(40, 50, 1));
-        datas1.add(new XYChart.Data(55, 60, 1));
-        datas1.add(new XYChart.Data(70, 70, 1));
-        datas1.add(new XYChart.Data(85, 80, 1));
-
+//        datas1.add(new XYChart.Data(10, 30, 1));
+//        datas1.add(new XYChart.Data(25, 15, 1));
+//        datas1.add(new XYChart.Data(40, 50, 1));
+//        datas1.add(new XYChart.Data(55, 60, 1));
+//        datas1.add(new XYChart.Data(70, 70, 1));
+//        datas1.add(new XYChart.Data(85, 80, 1));
 
         ObservableList<XYChart.Data> datas2 = FXCollections.observableArrayList();
 
-        datas2.add(new XYChart.Data(getXcgr(), getYcgr(), 2));
+        datas2.add(new XYChart.Data(getYcgr(), getXcgr()));
         //datas2.add(new XYChart.Data(i, Math.cos(i),0.1));
 
         series1.setData(datas1);

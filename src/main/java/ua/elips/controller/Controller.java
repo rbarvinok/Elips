@@ -9,27 +9,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BubbleChart;
-import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sun.security.action.OpenFileInputStreamAction;
 import ua.elips.geoProblem.controllerGeo.ControllerGeo;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.DialogManeger;
 import ua.elips.objects.Gap;
 import ua.elips.objects.OpenStage;
-
+import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
-
 import static ua.elips.objects.Calculate.*;
 import static ua.elips.objects.Clear.clear;
 
@@ -44,7 +43,6 @@ public class Controller extends Observable implements Initializable {
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
     public static int count;
-    private String nameOpenFile;
 
     @FXML
     public TextField x_Vp, y_Vp, h_Vp, x_cgr, y_cgr, a_cgr, d_cgr;
@@ -103,7 +101,6 @@ public class Controller extends Observable implements Initializable {
     }
 
     private void fillTable() {
-        //gapTableImpl.fillTestData();
         backupList = FXCollections.observableArrayList();
         backupList.addAll(gapTableImpl.getGapList());
         tableGap.setItems(gapTableImpl.getGapList());
@@ -241,7 +238,7 @@ public class Controller extends Observable implements Initializable {
 
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
     public void textFieldUpdate() {
         try {
             updateCoordinateVP();
@@ -376,7 +373,8 @@ public class Controller extends Observable implements Initializable {
         }
     }
 
-    public void onClickOpenFile(ActionEvent actionEvent) {
+    public void onClickOpenFile(ActionEvent actionEvent) throws IOException {
+        Desktop desktop = Desktop.getDesktop();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Еліпс. Відкриття файлу");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -384,18 +382,9 @@ public class Controller extends Observable implements Initializable {
                 new FileChooser.ExtensionFilter("*.*", "*.*"),
                 new FileChooser.ExtensionFilter(".txt", "*.txt"),
                 new FileChooser.ExtensionFilter("*.doc", "*.doc"));
-        File openFile = fileChooser.showOpenDialog(new Stage());
-        if (openFile != null) {
-            nameOpenFile = fileChooser.getTitle() + "txt";
-            openFile.getAbsoluteFile();
-
-            Runtime runtime = Runtime.getRuntime();
-            try {
-                runtime.exec("notepad");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedFile != null) {
+            desktop.open(selectedFile);
         }
     }
 
