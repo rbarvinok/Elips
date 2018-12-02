@@ -2,6 +2,7 @@ package ua.elips.interfaces.impls;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 import ua.elips.interfaces.GapTableInterface;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.Gap;

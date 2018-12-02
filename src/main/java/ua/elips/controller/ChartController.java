@@ -12,7 +12,6 @@ import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.Gap;
 import ua.elips.objects.PushBackBatton;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,15 +28,15 @@ public class ChartController implements Initializable {
     public Button backBtn;
     @FXML
     public ScatterChart scatterChart;
-    private Gap gap;
+    //private Gap gap;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         NumberAxis x = new NumberAxis();
         NumberAxis y = new NumberAxis();
-        ScatterChart<Number, Number> scatterChar = new ScatterChart<Number, Number>(x, y);
-        scatterChar.setTitle("Розриви");
+        ScatterChart<Number, Number> scc = new ScatterChart<Number, Number>(x, y);
+        scatterChart.setTitle("Розриви");
         x.setLabel("Y");
         y.setLabel("X");
 
@@ -50,11 +49,11 @@ public class ChartController implements Initializable {
         ObservableList<XYChart.Data> datas1 = FXCollections.observableArrayList();
 
         int i = 0;
-        for (Gap gap : gapTableImpl.gapList) {
+        for (Gap gap : gapTableImpl.getGapList()) {
             i++;
-            //System.out.println(getGapX());
-            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX())));
-            //datas1.add(new XYChart.Data(getGapX(), getGapY()));
+            System.out.println(i);
+            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY())+1, Double.parseDouble(gap.getX())+1));
+            System.out.println(gap.getX());
         }
 
 //        datas1.add(new XYChart.Data(10, 30, 1));
@@ -75,16 +74,6 @@ public class ChartController implements Initializable {
     }
 
 
-//    public double getGapX() {
-//        gapTableImpl.getGapList();
-//        return Double.parseDouble(gap.getY());
-//    }
-//
-//    public double getGapY() {
-//        gapTableImpl.getGapList();
-//
-//        return Double.parseDouble(gap.getX());
-//    }
 
     public void OnClickBackButton(ActionEvent actionEvent) throws IOException {
         pb.back = backBtn;

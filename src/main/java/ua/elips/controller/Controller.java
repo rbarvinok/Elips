@@ -391,12 +391,8 @@ public class Controller extends Observable implements Initializable {
     }
 
     public void onClickChartsButton(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/scchart.fxml"));
-        Parent ScatterChart = (Parent) fxmlLoader.load();
-        stage.setTitle("Графік розривів");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/znakukr.png")));
-        stage.setScene(new Scene(ScatterChart));
-        stage.show();
+        os.viewURL = "/view/scchart.fxml";
+        os.title = "Графік розривів";
+        os.openStage();
     }
 }
