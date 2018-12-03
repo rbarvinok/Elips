@@ -5,11 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import ua.elips.interfaces.impls.CollectionGapTable;
-import ua.elips.objects.Calculate;
 import ua.elips.objects.Gap;
 import ua.elips.objects.PushBackBatton;
 import java.io.IOException;
@@ -22,13 +20,11 @@ import static ua.elips.objects.Calculate.yCgr;
 public class ChartController implements Initializable {
     PushBackBatton pb = new PushBackBatton();
     public CollectionGapTable gapTableImpl = new CollectionGapTable();
-    //Calculate calc = new Calculate();
 
     @FXML
     public Button backBtn;
     @FXML
     public ScatterChart scatterChart;
-    //private Gap gap;
 
 
     @Override
@@ -36,7 +32,7 @@ public class ChartController implements Initializable {
         NumberAxis x = new NumberAxis();
         NumberAxis y = new NumberAxis();
         ScatterChart<Number, Number> scc = new ScatterChart<Number, Number>(x, y);
-        scatterChart.setTitle("Розриви");
+        scc.setTitle("Розриви");
         x.setLabel("Y");
         y.setLabel("X");
 
@@ -52,7 +48,7 @@ public class ChartController implements Initializable {
         for (Gap gap : gapTableImpl.getGapList()) {
             i++;
             System.out.println(i);
-            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY())+1, Double.parseDouble(gap.getX())+1));
+            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY())+0, Double.parseDouble(gap.getX())+0));
             System.out.println(gap.getX());
         }
 
@@ -74,13 +70,6 @@ public class ChartController implements Initializable {
     }
 
 
-
-    public void OnClickBackButton(ActionEvent actionEvent) throws IOException {
-        pb.back = backBtn;
-        pb.backButton();
-    }
-
-
     public double getXcgr() {
         return xCgr;
     }
@@ -89,4 +78,8 @@ public class ChartController implements Initializable {
         return yCgr;
     }
 
+    public void OnClickBackButton(ActionEvent actionEvent) throws IOException {
+        pb.back = backBtn;
+        pb.backButton();
+    }
 }
