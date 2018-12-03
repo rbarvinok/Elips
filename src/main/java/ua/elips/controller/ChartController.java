@@ -32,7 +32,7 @@ public class ChartController implements Initializable {
         NumberAxis x = new NumberAxis();
         NumberAxis y = new NumberAxis();
         ScatterChart<Number, Number> scc = new ScatterChart<Number, Number>(x, y);
-        scc.setTitle("Розриви");
+        scc.setTitle("");
         x.setLabel("Y");
         y.setLabel("X");
 
