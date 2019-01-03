@@ -20,10 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ua.elips.geoProblem.controllerGeo.ControllerGeo;
 import ua.elips.interfaces.impls.CollectionGapTable;
-import ua.elips.objects.Calculate;
-import ua.elips.objects.DialogManeger;
-import ua.elips.objects.Gap;
-import ua.elips.objects.OpenStage;
+import ua.elips.objects.*;
 
 import java.awt.*;
 import java.io.*;
@@ -41,6 +38,7 @@ public class Controller extends Observable implements Initializable {
     private Calculate calc = new Calculate();
     private ControllerGeo controllerGeo = new ControllerGeo();
     private OpenStage os = new OpenStage();
+    private SaveToWorld stw = new SaveToWorld();
 
     private Stage mainStage;
     private static final String FXML_EDIT = "/view/edit.fxml";
@@ -327,15 +325,7 @@ public class Controller extends Observable implements Initializable {
 
     public void OnClickSave(ActionEvent actionEvent) throws IOException {
         saveFromFile();
-        System.out.println();
-        System.out.println("Координати вогневої позиції: \n X = " + Double.parseDouble(x_Vp.getText()) + ", Y = " + yVp +
-                "\nКількість пострілів - " + count + "\nКоординати розривіів:");
-        gapTableImpl.print();
-        System.out.println();
-        System.out.println("Центр групи розривів: \nКоординати: \nX = " + x_cgr.getText() + ", Y = " + y_cgr.getText());
-        System.out.println("Середня лінія стрільби: \nД =  " + d_cgr.getText() + ",   Кут = " + a_cgr.getText());
-        System.out.println();
-        System.out.println("Відхилення: \n Вд = " + vd + ", Вб = " + vb);
+        //stw.toWord();
     }
 
     private void saveFromFile() throws IOException {
@@ -344,8 +334,10 @@ public class Controller extends Observable implements Initializable {
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Текст", "*.txt"),
-                new FileChooser.ExtensionFilter("Microsoft Word", "*.doc"));
+                new FileChooser.ExtensionFilter("Microsoft Word", "*.docx"));
         File outFile = fileChooser.showSaveDialog(new Stage());
+
+
         if (outFile != null) {
             try {
                 try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(outFile)))) {

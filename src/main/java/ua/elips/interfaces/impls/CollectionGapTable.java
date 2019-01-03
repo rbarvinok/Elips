@@ -60,7 +60,6 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void CalculatePowDdDb() {
         int n = 0;
-
         for (Gap gap : gapList) {
             n++;
             if (n == 1) {

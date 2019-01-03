@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Gap;
 import ua.elips.objects.PushBackBatton;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +20,7 @@ import static ua.elips.objects.Calculate.yCgr;
 
 public class ChartController implements Initializable {
     PushBackBatton pb = new PushBackBatton();
-    public CollectionGapTable gapTableImpl = new CollectionGapTable();
+    private CollectionGapTable gapTableImpl = new CollectionGapTable();
 
     @FXML
     public Button backBtn;
@@ -36,6 +37,7 @@ public class ChartController implements Initializable {
         x.setLabel("Y");
         y.setLabel("X");
 
+
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Координати розривів");
 
@@ -44,23 +46,14 @@ public class ChartController implements Initializable {
 
         ObservableList<XYChart.Data> datas1 = FXCollections.observableArrayList();
 
-        int i = 0;
-        for (Gap gap : gapTableImpl.getGapList()) {
-            i++;
-            System.out.println(i);
-            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY())+0, Double.parseDouble(gap.getX())+0));
-            System.out.println(gap.getX());
+        //datas1.add(new XYChart.Data(setGapList());
+        setGapList();
+
+        for (int i = 0; i < 20; i++) {
+            datas1.add(new XYChart.Data(i, Math.sin(i)));
         }
 
-//        datas1.add(new XYChart.Data(10, 30, 1));
-//        datas1.add(new XYChart.Data(25, 15, 1));
-//        datas1.add(new XYChart.Data(40, 50, 1));
-//        datas1.add(new XYChart.Data(55, 60, 1));
-//        datas1.add(new XYChart.Data(70, 70, 1));
-//        datas1.add(new XYChart.Data(85, 80, 1));
-
         ObservableList<XYChart.Data> datas2 = FXCollections.observableArrayList();
-
         datas2.add(new XYChart.Data(getYcgr(), getXcgr()));
 
         series1.setData(datas1);
@@ -70,7 +63,23 @@ public class ChartController implements Initializable {
     }
 
 
+    public void setGapList() {
+        //double [][] list = new double[] [];
+        int nam = 0;
+        for (Gap gap : gapTableImpl.getGapList()) {
+            nam++;
+            System.out.println(nam);
+            Double.parseDouble(gap.getY());
+            Double.parseDouble(gap.getX());
+
+            System.out.println(gap.getX());
+        }
+        gapTableImpl.print();
+    }
+
+
     public double getXcgr() {
+
         return xCgr;
     }
 
