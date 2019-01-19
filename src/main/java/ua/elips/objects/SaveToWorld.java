@@ -8,7 +8,6 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTR;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTText;
-import ua.elips.controller.Controller;
 import ua.elips.interfaces.impls.CollectionGapTable;
 
 import java.io.File;
@@ -23,18 +22,16 @@ public class SaveToWorld {
     public String headerContent, footerContent, fileContent;
 
 
-
     private Calculate calc = new Calculate();
-    private CollectionGapTable gapTableImpl = new CollectionGapTable();
+    public CollectionGapTable gapTableImpl = new CollectionGapTable();
 
     public void toWord() throws IOException {
 
 
-        headerContent = "ДЕРЖАВНИЙ НАУКОВО-ВИПРОБУВАЛЬНИЙ ІНСТИТУТ\n" +
-                "ВИПРОБУВАНЬ І СЕРТИФІКАЦІЇ ОЗБРОЄННЯ ТА ВІЙСЬКОВОЇ ТЕХНІКИ ЗБРОЙНИХ СИЛ УКРАЇНИ";
+        headerContent = "ДЕРЖАВНИЙ НАУКОВО-ВИПРОБУВАЛЬНИЙ ІНСТИТУТ ВИПРОБУВАНЬ І СЕРТИФІКАЦІЇ ОЗБРОЄННЯ ТА ВІЙСЬКОВОЇ ТЕХНІКИ ";
         footerContent = " 14033 м. Чернігів ";
 
-        fileContent = "Програма розрахунку ";
+        fileContent = "Розрахунок розсіювання точок падіння (розривів) за результатами стрільб артилерії ";
 
         // создаем модель docx документа, к которой будем прикручивать наполнение (колонтитулы, текст)
         XWPFDocument docxModel = new XWPFDocument();
@@ -47,20 +44,18 @@ public class SaveToWorld {
         CTP ctpHeaderModel = createHeaderModel("");
 
 
-        // устанавливаем сформированный верхний
-        // колонтитул в модель документа Word
+        // устанавливаем сформированный верхнийколонтитул в модель документа Word
         XWPFParagraph headerParagraph = new XWPFParagraph(ctpHeaderModel, docxModel);
         headerParagraph.setAlignment(ParagraphAlignment.CENTER);
         headerParagraph.setBorderBottom(Borders.BASIC_BLACK_SQUARES);
 
 
-
         XWPFRun hederparagraphConfig = headerParagraph.createRun();
         hederparagraphConfig.setText(headerContent);
-        //hederparagraphConfig.addBreak();
         hederparagraphConfig.setFontSize(12);
+        hederparagraphConfig.setBold(false);
         hederparagraphConfig.setFontFamily("Time New Roman");
-        hederparagraphConfig.setColor("0635aa");
+        hederparagraphConfig.setColor("0000ff");
 
         headerFooterPolicy.createHeader(
                 XWPFHeaderFooterPolicy.DEFAULT,
@@ -79,7 +74,7 @@ public class SaveToWorld {
         fotterparagraphConfig.addBreak();
         fotterparagraphConfig.setText(footerContent);
         fotterparagraphConfig.setFontFamily("Time New Roman");
-        fotterparagraphConfig.setColor("0635aa");
+        fotterparagraphConfig.setColor("0000ff");
 
         headerFooterPolicy.createFooter(
                 XWPFHeaderFooterPolicy.DEFAULT,
@@ -87,40 +82,62 @@ public class SaveToWorld {
         );
 
         // создаем обычный параграф
-
         XWPFParagraph bodyParagraph = docxModel.createParagraph();
-        bodyParagraph.setAlignment(ParagraphAlignment.LEFT);
+        bodyParagraph.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun document = bodyParagraph.createRun();
-        document.setFontSize(12);
+        document.setFontSize(14);
         document.setFontFamily("Time New Roman");
-
+        document.setBold(true);
+        document.setTextPosition(25);
         document.setText(fileContent);
+        document.addBreak();
 
-        document.addBreak();
-        document.addBreak();
-        document.setText("Координати вогневої позиції:  " + "  X = " + calc.xVp + ",  Y = " + calc.yVp );
-        document.addBreak();
-        document.setText("Кількість пострілів -  " + calc.count );
-        document.addBreak();
-        document.addBreak();
-        document.setText("Координати розривів:");
-        document.addBreak();
+        XWPFParagraph bodyParagraph1 = docxModel.createParagraph();
+        XWPFRun document1 = bodyParagraph1.createRun();
+        bodyParagraph1.setAlignment(ParagraphAlignment.LEFT);
+        document1.setFontSize(12);
+        document1.setFontFamily("Time New Roman");
+        document1.setText("Координати вогневої позиції:  " );
+        document1.addBreak();
+        document1.setText("X = " + calc.xVp + ",  Y = " + calc.yVp);
+        document1.addBreak();
+        document1.setText("Кількість пострілів -  " + calc.count);
+        document1.addBreak();
+        document1.addBreak();
+        document1.setText("Координати розривів:");
+        document1.addBreak();
+        document1.addBreak();
+
 
         int i = 0;
         for (Gap gap : gapTableImpl.getGapList()) {
             i++;
-            document.setText(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
+            document1.setText(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
+            document1.addBreak();
+            System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
         }
-        document.addBreak();
-        document.setText("Центр групи розривів: " );
-        document.addBreak();
-        document.setText("Координати: X = " + calc.calculateXcgr() + ", Y = " + calc.calculateYcgr());
-        document.addBreak();
-        document.setText("Середня лінія стрільби:  ");
-        document.setText("Д =  " + calc.calculateDcgr() + ",   Кут = " + calc.calculateAcgr());
-        document.addBreak();
-        document.addBreak();
-        document.setText("Відхилення:  Вд = " + vd + "  Вб = " + vb);
+
+
+        for (int ii = 1; ii < 10; ii++) {
+            document1.setText(ii + ")  -  " + Math.sin(ii));
+            document1.addBreak();
+        }
+
+        document1.addBreak();
+        document1.setText("Центр групи розривів: ");
+        document1.addBreak();
+        document1.setText("Координати: ");
+        document1.addBreak();
+        document1.setText("X = " + calc.calculateXcgr() + ",  Y = " + calc.calculateYcgr());
+        document1.addBreak();
+        document1.setText("Середня лінія стрільби:  ");
+        document1.addBreak();
+        document1.setText("Д =  " + calc.calculateDcgr() + ",   Кут = " + calc.calculateAcgr());
+        document1.addBreak();
+        document1.addBreak();
+        document1.setText("Відхилення:  ");
+        document1.addBreak();
+        document1.setText("Вд = " + vd + ",   Вб = " + vb);
 
 
         // сохраняем модель docx документа в файл
@@ -175,7 +192,6 @@ public class SaveToWorld {
         cttFooter.setStringValue(footerContent);
         return ctpFooterModel;
     }
-
 
 
 }

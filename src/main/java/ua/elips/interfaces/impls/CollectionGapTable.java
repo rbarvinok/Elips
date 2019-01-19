@@ -2,17 +2,9 @@ package ua.elips.interfaces.impls;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.chart.XYChart;
 import ua.elips.interfaces.GapTableInterface;
 import ua.elips.objects.Calculate;
 import ua.elips.objects.Gap;
-
-import java.io.*;
-import java.nio.Buffer;
-
-import static ua.elips.objects.Calculate.vb;
-import static ua.elips.objects.Calculate.vd;
-import static ua.elips.objects.Calculate.yVp;
 
 // класс реализовывает интерфейс с помощью коллекции
 public class CollectionGapTable implements GapTableInterface {
@@ -24,7 +16,7 @@ public class CollectionGapTable implements GapTableInterface {
 
     @Override
     public void add(Gap gap) {
-        gapList.add(gap);
+        getGapList().add(gap);
     }
 
     @Override
@@ -36,7 +28,7 @@ public class CollectionGapTable implements GapTableInterface {
 
     @Override
     public void delete(Gap gap) {
-        gapList.remove(gap);
+        getGapList().remove(gap);
     }
 
     public ObservableList<Gap> getGapList() {
@@ -45,7 +37,7 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void CoordCgr() {
         int nam = 0;
-        for (Gap gap : gapList) {
+        for (Gap gap : getGapList()) {
             nam++;
             if (nam == 1) {
                 x = Double.parseDouble(gap.getX());
@@ -60,7 +52,7 @@ public class CollectionGapTable implements GapTableInterface {
 
     public void CalculatePowDdDb() {
         int n = 0;
-        for (Gap gap : gapList) {
+        for (Gap gap : getGapList()) {
             n++;
             if (n == 1) {
                 pow_dD = Math.pow(Double.parseDouble(gap.getDD().replace(",", ".")), 2);
@@ -77,7 +69,7 @@ public class CollectionGapTable implements GapTableInterface {
     public void print() {
         int i = 0;
         //System.out.println();
-        for (Gap gap : gapList) {
+        for (Gap gap : getGapList()) {
             i++;
             System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
         }
@@ -89,6 +81,10 @@ public class CollectionGapTable implements GapTableInterface {
 //        gapList.add(new Gap(namber++, "45555.5", "96888.3", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
 //        gapList.add(new Gap(namber++, "45877.2", "96850.2", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
 //        gapList.add(new Gap(namber++, "47777.2", "32550.2", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
+    }
+
+    public void setGapList(ObservableList<Gap> gapList) {
+        this.gapList = gapList;
     }
 }
 

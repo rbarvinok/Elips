@@ -11,6 +11,7 @@ import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Gap;
 import ua.elips.objects.PushBackBatton;
 
+import java.awt.geom.RectangularShape;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,14 +46,19 @@ public class ChartController implements Initializable {
         series2.setName("Центр групи розривів");
 
         ObservableList<XYChart.Data> datas1 = FXCollections.observableArrayList();
-
-        //datas1.add(new XYChart.Data(setGapList());
-        setGapList();
-
-        for (int i = 0; i < 20; i++) {
-            datas1.add(new XYChart.Data(i, Math.sin(i)));
+        int nam = 0;
+        for (Gap gap : gapTableImpl.getGapList()) {
+            nam++;
+            datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX())));
+            System.out.println(gap.getY());
+            for (int ii = 1; ii < 10; ii++) {
+                datas1.add(new XYChart.Data(ii, Math.sin(ii)));
+            }
         }
 
+/*
+
+*/
         ObservableList<XYChart.Data> datas2 = FXCollections.observableArrayList();
         datas2.add(new XYChart.Data(getYcgr(), getXcgr()));
 
@@ -63,23 +69,7 @@ public class ChartController implements Initializable {
     }
 
 
-    public void setGapList() {
-        //double [][] list = new double[] [];
-        int nam = 0;
-        for (Gap gap : gapTableImpl.getGapList()) {
-            nam++;
-            System.out.println(nam);
-            Double.parseDouble(gap.getY());
-            Double.parseDouble(gap.getX());
-
-            System.out.println(gap.getX());
-        }
-        gapTableImpl.print();
-    }
-
-
     public double getXcgr() {
-
         return xCgr;
     }
 

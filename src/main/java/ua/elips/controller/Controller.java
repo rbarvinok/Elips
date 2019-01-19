@@ -320,12 +320,12 @@ public class Controller extends Observable implements Initializable {
 
     public void OnClickNew(ActionEvent actionEvent) {
         clear(x_Vp, y_Vp, h_Vp);
-        gapTableImpl.gapList.clear();
+        gapTableImpl.getGapList().clear();
     }
 
     public void OnClickSave(ActionEvent actionEvent) throws IOException {
-        saveFromFile();
-        //stw.toWord();
+        //saveFromFile();
+        stw.toWord();
     }
 
     private void saveFromFile() throws IOException {
@@ -334,7 +334,7 @@ public class Controller extends Observable implements Initializable {
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Текст", "*.txt"),
-                new FileChooser.ExtensionFilter("Microsoft Word", "*.docx"));
+                new FileChooser.ExtensionFilter("Microsoft Word", "*.doc"));
         File outFile = fileChooser.showSaveDialog(new Stage());
 
 
