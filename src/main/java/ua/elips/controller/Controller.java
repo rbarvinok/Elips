@@ -33,9 +33,9 @@ import static ua.elips.objects.Clear.clear;
 
 public class Controller extends Observable implements Initializable {
 
-    private CollectionGapTable gapTableImpl = new CollectionGapTable();
+    public static CollectionGapTable gapTableImpl = new CollectionGapTable();
     private DialogManeger dm = new DialogManeger();
-    private Calculate calc = new Calculate();
+    public static Calculate calc = new Calculate();
     private ControllerGeo controllerGeo = new ControllerGeo();
     private OpenStage os = new OpenStage();
     private SaveToWorld stw = new SaveToWorld();
@@ -336,7 +336,6 @@ public class Controller extends Observable implements Initializable {
                 new FileChooser.ExtensionFilter("Текст", "*.txt"),
                 new FileChooser.ExtensionFilter("Microsoft Word", "*.doc"));
         File outFile = fileChooser.showSaveDialog(new Stage());
-
 
         if (outFile != null) {
             try {

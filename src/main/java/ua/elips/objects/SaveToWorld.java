@@ -15,15 +15,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import static ua.elips.controller.Controller.calc;
+import static ua.elips.controller.Controller.gapTableImpl;
 import static ua.elips.objects.Calculate.vb;
 import static ua.elips.objects.Calculate.vd;
 
 public class SaveToWorld {
     public String headerContent, footerContent, fileContent;
 
-
-    private Calculate calc = new Calculate();
-    public CollectionGapTable gapTableImpl = new CollectionGapTable();
 
     public void toWord() throws IOException {
 
@@ -97,7 +96,7 @@ public class SaveToWorld {
         bodyParagraph1.setAlignment(ParagraphAlignment.LEFT);
         document1.setFontSize(12);
         document1.setFontFamily("Time New Roman");
-        document1.setText("Координати вогневої позиції:  " );
+        document1.setText("Координати вогневої позиції:  ");
         document1.addBreak();
         document1.setText("X = " + calc.xVp + ",  Y = " + calc.yVp);
         document1.addBreak();
@@ -106,8 +105,6 @@ public class SaveToWorld {
         document1.addBreak();
         document1.setText("Координати розривів:");
         document1.addBreak();
-        document1.addBreak();
-
 
         int i = 0;
         for (Gap gap : gapTableImpl.getGapList()) {
@@ -115,12 +112,6 @@ public class SaveToWorld {
             document1.setText(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
             document1.addBreak();
             System.out.println(i + ") X = " + gap.getX() + "; Y = " + gap.getY() + "; Д вп-р = " + gap.getD() + "; А вп-р = " + gap.getA());
-        }
-
-
-        for (int ii = 1; ii < 10; ii++) {
-            document1.setText(ii + ")  -  " + Math.sin(ii));
-            document1.addBreak();
         }
 
         document1.addBreak();

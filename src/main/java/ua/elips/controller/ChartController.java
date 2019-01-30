@@ -7,21 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
-import ua.elips.interfaces.impls.CollectionGapTable;
 import ua.elips.objects.Gap;
 import ua.elips.objects.PushBackBatton;
 
-import java.awt.geom.RectangularShape;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static ua.elips.controller.Controller.gapTableImpl;
 import static ua.elips.objects.Calculate.xCgr;
 import static ua.elips.objects.Calculate.yCgr;
 
 public class ChartController implements Initializable {
     PushBackBatton pb = new PushBackBatton();
-    private CollectionGapTable gapTableImpl = new CollectionGapTable();
+
 
     @FXML
     public Button backBtn;
@@ -50,15 +49,8 @@ public class ChartController implements Initializable {
         for (Gap gap : gapTableImpl.getGapList()) {
             nam++;
             datas1.add(new XYChart.Data(Double.parseDouble(gap.getY()), Double.parseDouble(gap.getX())));
-            System.out.println(gap.getY());
-            for (int ii = 1; ii < 10; ii++) {
-                datas1.add(new XYChart.Data(ii, Math.sin(ii)));
-            }
         }
 
-/*
-
-*/
         ObservableList<XYChart.Data> datas2 = FXCollections.observableArrayList();
         datas2.add(new XYChart.Data(getYcgr(), getXcgr()));
 

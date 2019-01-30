@@ -83,8 +83,5 @@ public class CollectionGapTable implements GapTableInterface {
 //        gapList.add(new Gap(namber++, "47777.2", "32550.2", calc.calculateDGap(), calc.calculateAGap(), calc.calculateDd(), calc.calculateDb()));
     }
 
-    public void setGapList(ObservableList<Gap> gapList) {
-        this.gapList = gapList;
-    }
 }
 
