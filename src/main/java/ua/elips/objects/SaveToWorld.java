@@ -8,7 +8,6 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTR;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTText;
-import ua.elips.interfaces.impls.CollectionGapTable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
