@@ -1,0 +1,25 @@
+.button1 {
+    -fx-background-color: transparent;
+}
+
+.button1:hover {
+    -fx-border-color: #d0d0d0;
+}
+
+.text-area:hover {
+    -fx-text-fill: #404044;
+    -fx-background-color: green;
+}
+
+.text-field:hover {
+    -fx-text-fill: #404044;
+    -fx-border-color: green;
+}
+
+
+.chart-symbol {
+    -fx-background-color: #860061, #d0d0d0;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
