@@ -19,8 +19,5 @@
         <module name="Elips" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Elips" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

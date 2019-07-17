@@ -136,7 +136,7 @@ public class SaveToWorld {
         fileChooser.setTitle("Еліпс. Збереження файлу");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Документ Word ", "*.docx");
         fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setInitialFileName("11111");
+        fileChooser.setInitialFileName("Розрахунок розсіювання");
         File userDirectory = new File("D:/");
         fileChooser.setInitialDirectory(userDirectory);
 
